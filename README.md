@@ -12,7 +12,7 @@ I will also use:
 - and the find() method for partial name search.
 
 
-classes = Data class, logic class, display class
+## Classes 
 
 - Data class will load csv at start and add new airport
 - Logic class will handle all searching, sorting, analysis etc.
