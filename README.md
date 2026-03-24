@@ -17,3 +17,5 @@ classes = Data class, logic class, display class
 - Data class will load csv at start and add new airport
 - Logic class will handle all searching, sorting, analysis etc.
 - Display class will handle menus and displaying data in a readable way
+
+![AirportProjectUML](AirportProjectUML.png)
