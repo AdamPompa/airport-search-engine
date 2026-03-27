@@ -11,6 +11,5 @@ class DataManager {
 		void save_data();
 
 	private:
-		bool data_change = false;
-
+		static bool data_change;
 };
