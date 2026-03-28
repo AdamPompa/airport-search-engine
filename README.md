@@ -14,7 +14,17 @@ I will also use:
 
 ## Classes 
 
-- Data class will load csv at start and add new airport
+### DataManager
+
+attributes: data_change
+
+data_change tracks wether the csv has been changed at all and determines if the csv should be overwritten.
+
+methods: load_data(), add_airport(), save_data()
+
+load_data() reads from the csv and creates a vector of structs in working memory for the program to use.
+
+
 - Logic class will handle all searching, sorting, analysis etc.
 - Display class will handle menus and displaying data in a readable way
 
