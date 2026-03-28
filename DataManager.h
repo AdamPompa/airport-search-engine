@@ -21,9 +21,6 @@ struct Airport {
 class DataManager {
 
 	public:
-		DataManager();
-		~DataManager();
-
 		static void load_data();
 		static void add_airport();
 		static void save_data();

@@ -70,6 +70,14 @@ void DataManager::load_data() {
 
 }
 
+void DataManager::add_airport() {
+	
+}
+
+void DataManager::save_data() {
+
+}
+
 int main() {
 	DataManager::load_data();
 	cout << airport_vector[0];
