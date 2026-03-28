@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="AirportProject.vcxproj" Id="50836f85-886c-480c-a65f-117f51eb7ad6" />
+</Solution>
