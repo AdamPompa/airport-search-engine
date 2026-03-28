@@ -7,24 +7,9 @@ using namespace std;
 
 bool DataManager::data_change = false;
 
-struct Coordinates {
-	double latitude;
-	double longitude;
-};
-
-struct Airport {
-	string type;
-	string name;
-	int elevation;
-	string iso_country;
-	string municipality;
-	string iata_code;
-	Coordinates airport_coordinates;
-};
-
 vector <Airport> airport_vector;
 
-void load_data() {
+void DataManager::load_data() {
 	ifstream original_file("airport-codes");
 	string header;
 	string row;
@@ -86,7 +71,7 @@ void load_data() {
 }
 
 int main() {
-	load_data();
+	DataManager::load_data();
 	cout << airport_vector[0];
 }
 
