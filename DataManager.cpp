@@ -85,3 +85,8 @@ void load_data() {
 
 }
 
+int main() {
+	load_data();
+	cout << airport_vector[0];
+}
+
