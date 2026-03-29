@@ -12,20 +12,24 @@ void UserInterface::main_menu() {
 		<< string(border_width, '=')
 		<< endl;
 
+	cout << endl << "Choose Option:" << endl
+		<< "1. Search by Country" << endl
+		<< "2. Search by Name" << endl
+		<< "3. Search by IATA" << endl
+		<< "4. Count by Type" << endl
+		<< "5. Add New Airport" << endl
+		<< "6. Advanced Options" << endl
+		<< "7. Exit" << endl;
+
 	while (true) {
+		cout << endl << "Option: ";
 		int choice;
 
-		cout << endl << "Choose Option:" << endl
-			<< "1. Search by Country" << endl
-			<< "2. Search by Name" << endl
-			<< "3. Search by IATA" << endl
-			<< "4. Count by Type" << endl
-			<< "5. Add New Airport" << endl
-			<< "6. Advanced Options" << endl
-			<< "7. Exit" << endl
-			<< endl << "Option: ";
-
-		cin >> choice;
+		if (!(cin >> choice)) {
+			cout << "Choose Valid Input (1-7)";
+			cin.clear();
+			cin.ignore(10000, '\n');
+		}
 
 		switch (choice) {
 			case 1:
