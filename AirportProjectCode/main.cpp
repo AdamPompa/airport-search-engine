@@ -1,6 +1,4 @@
 #include "UserInterface.h"
-#include "UserInterface.cpp"
-
 
 int main() {
 	UserInterface ui;
