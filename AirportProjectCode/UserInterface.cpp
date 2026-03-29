@@ -3,7 +3,7 @@
 using namespace std;
 
 void UserInterface::main_menu() {
-	
+
 	string title = " Main Menu ";
 	int border_width = 25;
 
@@ -11,5 +11,49 @@ void UserInterface::main_menu() {
 		<< title
 		<< string(border_width, '=')
 		<< endl;
+
+	while (true) {
+		int choice;
+
+		cout << endl << "Choose Option:" << endl
+			<< "1. Search by Country" << endl
+			<< "2. Search by Name" << endl
+			<< "3. Search by IATA" << endl
+			<< "4. Count by Type" << endl
+			<< "5. Add New Airport" << endl
+			<< "6. Advanced Options" << endl
+			<< "7. Exit" << endl
+			<< endl << "Option: ";
+
+		cin >> choice;
+
+		switch (choice) {
+			case 1:
+				cout << "success";
+				break;
+			case 2:
+				cout << "success";
+				break;
+			case 3:
+				cout << "success";
+				break;
+			case 4:
+				cout << "success";
+				break;
+			case 5:
+				cout << "success";
+				break;
+			case 6:
+				cout << "success";
+				break;
+			case 7:
+				cout << "success";				
+				break;
+			default:
+				cout << "Please Choose a Valid Option (1-7)";
+		}
+
+	}
+	
 
 }
