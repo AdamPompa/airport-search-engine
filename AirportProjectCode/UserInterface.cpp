@@ -19,10 +19,10 @@ void UserInterface::search_by_name_menu() {
 			<< "1. Search" << endl
 			<< "2. Back to Main Menu";
 
-		cout << endl << "Option: ";
 		int choice;
 
 		while (true) {
+			cout << endl << "Option: ";
 			if (!(cin >> choice)) {
 				cout << "Choose Valid Option (1-2)";
 				cin.clear();
@@ -58,10 +58,10 @@ void UserInterface::search_by_country_menu() {
 			<< "1. Search" << endl
 			<< "2. Back to Main Menu";
 
-		cout << endl << "Option: ";
 		int choice;
 
 		while (true) {
+			cout << endl << "Option: ";
 			if (!(cin >> choice)) {
 				cout << "Choose Valid Option (1-2)";
 				cin.clear();
@@ -101,12 +101,11 @@ void UserInterface::main_menu() {
 			<< "6. Advanced Options" << endl
 			<< "7. Exit" << endl;
 
-		cout << endl << "Option: ";
 		int choice;
 
 		while (true) {
-			if (!(cin >> choice)) 
-			{
+			cout << endl << "Option: ";
+			if (!(cin >> choice)) {
 				cout << "Choose Valid Option (1-7)";
 				cin.clear();
 				cin.ignore(10000, '\n');
@@ -120,7 +119,7 @@ void UserInterface::main_menu() {
 			UserInterface::search_by_country_menu();
 			break;
 		case 2:
-			cout << "success";
+			search_by_name_menu();
 			break;
 		case 3:
 			cout << "success";
