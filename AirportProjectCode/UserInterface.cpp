@@ -31,6 +31,7 @@ void UserInterface::main_menu() {
 			cout << "Choose Valid Option (1-7)";
 			cin.clear();
 			cin.ignore(10000, '\n');
+			continue;
 		}
 
 		switch (choice) {
