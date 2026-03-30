@@ -22,10 +22,14 @@ void UserInterface::search_by_name_menu() {
 		cout << endl << "Option: ";
 		int choice;
 
-		if (!(cin >> choice)) {
-			cout << "Choose Valid Option (1-2)";
-			cin.clear();
-			cin.ignore(10000, '\n');
+		while (true) {
+			if (!(cin >> choice)) {
+				cout << "Choose Valid Option (1-2)";
+				cin.clear();
+				cin.ignore(10000, '\n');
+				continue;
+			}
+			break;
 		}
 
 		switch (choice) {
@@ -57,10 +61,14 @@ void UserInterface::search_by_country_menu() {
 		cout << endl << "Option: ";
 		int choice;
 
-		if (!(cin >> choice)) {
-			cout << "Choose Valid Option (1-2)";
-			cin.clear();
-			cin.ignore(10000, '\n');
+		while (true) {
+			if (!(cin >> choice)) {
+				cout << "Choose Valid Option (1-2)";
+				cin.clear();
+				cin.ignore(10000, '\n');
+				continue;
+			}
+			break;
 		}
 
 		switch (choice) {
