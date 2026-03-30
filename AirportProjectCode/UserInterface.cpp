@@ -94,17 +94,18 @@ void UserInterface::main_menu() {
 			<< "6. Advanced Options" << endl
 			<< "7. Exit" << endl;
 
-		cout << endl << "Option: ";
-		int choice;
+		while (true) {
+			cout << endl << "Option: ";
+			int choice;
 
-		if (!(cin >> choice)) {
-			cout << "Choose Valid Option (1-7)";
-			cin.clear();
-			cin.ignore(10000, '\n');
-			continue;
-		}
+			if (!(cin >> choice)) {
+				cout << "Choose Valid Option (1-7)";
+				cin.clear();
+				cin.ignore(10000, '\n');
+				continue;
+			}
 
-		switch (choice) {
+			switch (choice) {
 			case 1:
 				UserInterface::search_by_country_menu();
 				break;
@@ -124,10 +125,11 @@ void UserInterface::main_menu() {
 				cout << "success";
 				break;
 			case 7:
-				cout << "success";				
+				cout << "success";
 				break;
 			default:
 				cout << "Choose Valid Option (1-7)";
+			}
 		}
 	}
 }
