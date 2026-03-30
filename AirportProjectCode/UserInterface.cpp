@@ -3,6 +3,41 @@
 #include <cmath>
 using namespace std;
 
+void UserInterface::search_by_country_menu() {
+
+	string title = " Search by Country ";
+	int border_space = 50;
+	int menu_border = round((border_space - title.length()) / 2);
+
+	cout << string(menu_border, '=')
+		<< title
+		<< string(menu_border, '=')
+		<< endl;
+
+	cout << "Choose an Option:" << endl
+		<< "1. Search" << endl
+		<< "2. Back to Main Menu";
+
+	while (true) {
+		cout << endl << "Option: ";
+		int choice;
+
+		if (!(cin >> choice)) {
+			cout << "Choose Valid Option (1-2)";
+			cin.clear();
+			cin.ignore(10000, '\n');
+		}
+
+		switch (choice) {
+		case 1:
+			cout << "success";
+			break;
+		case 2:
+			return;
+		}
+	}
+}
+
 void UserInterface::main_menu() {
 
 	string title = " Main Menu ";
@@ -63,39 +98,4 @@ void UserInterface::main_menu() {
 	}
 	
 
-}
-
-void UserInterface::search_by_country_menu() {
-
-	string title = " Search by Country ";
-	int border_space = 50;
-	int menu_border = round((border_space - title.length()) / 2);
-
-	cout << string(menu_border, '=')
-		<< title
-		<< string(menu_border, '=')
-		<< endl;
-
-	cout << "Choose an Option:" << endl
-		<< "1. Search" << endl
-		<< "2. Back to Main Menu";
-
-	while (true) {
-		cout << endl << "Option: ";
-		int choice;
-
-		if (!(cin >> choice)) {
-			cout << "Choose Valid Option (1-2)";
-			cin.clear();
-			cin.ignore(10000, '\n');
-		}
-
-		switch (choice) {
-			case 1: 
-				cout << "success";
-				break;
-			case 2:
-				return;
-		}
-	}
 }
