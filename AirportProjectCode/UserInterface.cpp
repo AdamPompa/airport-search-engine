@@ -71,7 +71,7 @@ void UserInterface::main_menu() {
 
 		switch (choice) {
 			case 1:
-				UserInterface::search_by_country_menu;
+				UserInterface::search_by_country_menu();
 				break;
 			case 2:
 				cout << "success";
@@ -94,8 +94,5 @@ void UserInterface::main_menu() {
 			default:
 				cout << "Choose Valid Option (1-7)";
 		}
-
 	}
-	
-
 }
