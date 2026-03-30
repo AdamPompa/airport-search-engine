@@ -1,6 +1,7 @@
 #include "UserInterface.h"
 #include <iostream>
 #include <cmath>
+#include <string>
 using namespace std;
 
 void UserInterface::search_by_name_menu() {
@@ -101,11 +102,27 @@ void UserInterface::main_menu() {
 			<< "6. Advanced Options" << endl
 			<< "7. Exit" << endl;
 
-		int choice;
+		string choice;
 
 		while (true) {
 			cout << endl << "Option: ";
-			if (!(cin >> choice)) {
+			getline(cin, choice);
+
+			if (choice.empty()) 
+			{
+				cout << "Choose Valid Option (1-7)";
+				continue;
+			}
+
+			try {
+				stoi(choice);
+			}
+			catch (...) {
+				cout << "Choose Valid Option (1-7)";
+				continue;
+			}
+
+			if (choice < 1 || choice > 7)) {
 				cout << "Choose Valid Option (1-7)";
 				cin.clear();
 				cin.ignore(10000, '\n');
