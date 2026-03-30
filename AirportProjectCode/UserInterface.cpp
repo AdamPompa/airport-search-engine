@@ -74,7 +74,6 @@ void UserInterface::search_by_country_menu() {
 }
 
 void UserInterface::main_menu() {
-
 	string title = " Main Menu ";
 	int border_space = 50;
 	int menu_border = round((border_space - title.length()) / 2);
@@ -94,42 +93,44 @@ void UserInterface::main_menu() {
 			<< "6. Advanced Options" << endl
 			<< "7. Exit" << endl;
 
-		while (true) {
-			cout << endl << "Option: ";
-			int choice;
+		cout << endl << "Option: ";
+		int choice;
 
-			if (!(cin >> choice)) {
+		while (true) {
+			if (!(cin >> choice)) 
+			{
 				cout << "Choose Valid Option (1-7)";
 				cin.clear();
 				cin.ignore(10000, '\n');
 				continue;
 			}
+			break;
+		}
 
-			switch (choice) {
-			case 1:
-				UserInterface::search_by_country_menu();
-				break;
-			case 2:
-				cout << "success";
-				break;
-			case 3:
-				cout << "success";
-				break;
-			case 4:
-				cout << "success";
-				break;
-			case 5:
-				cout << "success";
-				break;
-			case 6:
-				cout << "success";
-				break;
-			case 7:
-				cout << "success";
-				break;
-			default:
-				cout << "Choose Valid Option (1-7)";
-			}
+		switch (choice) {
+		case 1:
+			UserInterface::search_by_country_menu();
+			break;
+		case 2:
+			cout << "success";
+			break;
+		case 3:
+			cout << "success";
+			break;
+		case 4:
+			cout << "success";
+			break;
+		case 5:
+			cout << "success";
+			break;
+		case 6:
+			cout << "success";
+			break;
+		case 7:
+			cout << "success";
+			break;
+		default:
+			cout << "Choose Valid Option (1-7)";
 		}
 	}
 }
