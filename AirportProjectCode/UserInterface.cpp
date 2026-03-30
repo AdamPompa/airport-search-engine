@@ -44,21 +44,21 @@ void UserInterface::main_menu() {
 	int border_space = 50;
 	int menu_border = round((border_space - title.length()) / 2);
 
-	cout << string(menu_border, '=')
-		<< title
-		<< string(menu_border, '=')
-		<< endl;
-
-	cout << endl << "Choose an Option:" << endl
-		<< "1. Search by Country" << endl
-		<< "2. Search by Name" << endl
-		<< "3. Search by IATA" << endl
-		<< "4. Count by Type" << endl
-		<< "5. Add New Airport" << endl
-		<< "6. Advanced Options" << endl
-		<< "7. Exit" << endl;
-
 	while (true) {
+		cout << string(menu_border, '=')
+			<< title
+			<< string(menu_border, '=')
+			<< endl;
+
+		cout << endl << "Choose an Option:" << endl
+			<< "1. Search by Country" << endl
+			<< "2. Search by Name" << endl
+			<< "3. Search by IATA" << endl
+			<< "4. Count by Type" << endl
+			<< "5. Add New Airport" << endl
+			<< "6. Advanced Options" << endl
+			<< "7. Exit" << endl;
+
 		cout << endl << "Option: ";
 		int choice;
 
