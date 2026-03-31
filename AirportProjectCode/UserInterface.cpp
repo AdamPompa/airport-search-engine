@@ -102,27 +102,27 @@ void UserInterface::main_menu() {
 			<< "6. Advanced Options" << endl
 			<< "7. Exit" << endl;
 
-		string choice;
-
+		string string_choice;
+		int choice;
 		while (true) {
 			cout << endl << "Option: ";
-			getline(cin, choice);
+			getline(cin, string_choice);
 
-			if (choice.empty()) 
+			if (string_choice.empty()) 
 			{
 				cout << "Choose Valid Option (1-7)";
 				continue;
 			}
 
 			try {
-				stoi(choice);
+				choice = stoi(string_choice);
 			}
 			catch (...) {
 				cout << "Choose Valid Option (1-7)";
 				continue;
 			}
 
-			if (choice < 1 || choice > 7)) {
+			if (choice < 1 || choice > 7) {
 				cout << "Choose Valid Option (1-7)";
 				cin.clear();
 				cin.ignore(10000, '\n');
