@@ -110,7 +110,7 @@ void UserInterface::main_menu() {
 
 			if (string_choice.empty()) 
 			{
-				cout << "Choose Valid Option (1-7)";
+				cout << endl << "Choose Valid Option (1-7)";
 				continue;
 			}
 
@@ -118,14 +118,14 @@ void UserInterface::main_menu() {
 				choice = stoi(string_choice);
 			}
 			catch (...) {
-				cout << "Choose Valid Option (1-7)";
+				cout << endl << "Choose Valid Option (1-7)";
 				continue;
 			}
 
 			if (choice < 1 || choice > 7) {
-				cout << "Choose Valid Option (1-7)";
-				cin.clear();
-				cin.ignore(10000, '\n');
+				cout << endl << "Choose Valid Option (1-7)";
+				// cin.clear();
+				// cin.ignore(10000, '\n');
 				continue;
 			}
 			break;
