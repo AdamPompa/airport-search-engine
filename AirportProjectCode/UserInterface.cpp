@@ -4,6 +4,261 @@
 #include <string>
 using namespace std;
 
+void UserInterface::exit_menu() {
+
+	string title = " Exit ";
+	int border_space = 50;
+	int menu_border = round((border_space - title.length()) / 2);
+
+	while (true) {
+		cout << string(menu_border, '=')
+			<< title
+			<< string(menu_border, '=')
+			<< endl;
+
+		cout << "1. Exit (Any additions to the database will be saved)" << endl
+			<< "2. Back to Main Menu";
+
+		string string_choice;
+		int choice;
+		while (true) {
+			cout << endl << "Option: ";
+			getline(cin, string_choice);
+
+			if (string_choice.empty())
+			{
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+
+			try {
+				choice = stoi(string_choice);
+			}
+			catch (...) {
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+
+			if (choice < 1 || choice > 2) {
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+			break;
+		}
+
+		switch (choice) {
+		case 1:
+			cout << "success";
+			break;
+		case 2:
+			return;
+		}
+	}
+}
+
+void UserInterface::advanced_options_menu() {
+
+	string title = " Advanced Options ";
+	int border_space = 50;
+	int menu_border = round((border_space - title.length()) / 2);
+
+	while (true) {
+		cout << string(menu_border, '=')
+			<< title
+			<< string(menu_border, '=')
+			<< endl;
+
+		cout << "1. Add New Airport" << endl
+			<< "2. Back to Main Menu";
+
+		string string_choice;
+		int choice;
+		while (true) {
+			cout << endl << "Option: ";
+			getline(cin, string_choice);
+
+			if (string_choice.empty())
+			{
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+
+			try {
+				choice = stoi(string_choice);
+			}
+			catch (...) {
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+
+			if (choice < 1 || choice > 2) {
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+			break;
+		}
+
+		switch (choice) {
+		case 1:
+			cout << "success";
+			break;
+		case 2:
+			return;
+		}
+	}
+}
+
+void UserInterface::add_new_airport_menu() {
+
+	string title = " Add New Airport ";
+	int border_space = 50;
+	int menu_border = round((border_space - title.length()) / 2);
+
+	while (true) {
+		cout << string(menu_border, '=')
+			<< title
+			<< string(menu_border, '=')
+			<< endl;
+
+		cout << "1. Add New Airport" << endl
+			<< "2. Back to Main Menu";
+
+		string string_choice;
+		int choice;
+		while (true) {
+			cout << endl << "Option: ";
+			getline(cin, string_choice);
+
+			if (string_choice.empty())
+			{
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+
+			try {
+				choice = stoi(string_choice);
+			}
+			catch (...) {
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+
+			if (choice < 1 || choice > 2) {
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+			break;
+		}
+
+		switch (choice) {
+		case 1:
+			cout << "success";
+			break;
+		case 2:
+			return;
+		}
+	}
+}
+
+void UserInterface::count_by_type_menu() {
+
+	string title = " Count by Type ";
+	int border_space = 50;
+	int menu_border = round((border_space - title.length()) / 2);
+
+	while (true) {
+		cout << string(menu_border, '=')
+			<< title
+			<< string(menu_border, '=')
+			<< endl;
+
+		// count function here
+
+		cout << "1. Back to Main Menu";
+
+		string string_choice;
+		int choice;
+		while (true) {
+			cout << endl << "Option: ";
+			getline(cin, string_choice);
+
+			if (string_choice.empty())
+			{
+				cout << endl << "Choose Valid Option (1)";
+				continue;
+			}
+
+			try {
+				choice = stoi(string_choice);
+			}
+			catch (...) {
+				cout << endl << "Choose Valid Option (1)";
+				continue;
+			}
+
+			if (choice != 1) {
+				cout << endl << "Choose Valid Option (1)";
+				continue;
+			}
+			break;
+		}
+		return;
+	}
+}
+
+void UserInterface::search_by_iata_menu() {
+
+	string title = " Search by IATA ";
+	int border_space = 50;
+	int menu_border = round((border_space - title.length()) / 2);
+
+	while (true) {
+		cout << string(menu_border, '=')
+			<< title
+			<< string(menu_border, '=')
+			<< endl;
+
+		cout << "Choose an Option:" << endl
+			<< "1. Search" << endl
+			<< "2. Back to Main Menu";
+
+		string string_choice;
+		int choice;
+		while (true) {
+			cout << endl << "Option: ";
+			getline(cin, string_choice);
+
+			if (string_choice.empty())
+			{
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+
+			try {
+				choice = stoi(string_choice);
+			}
+			catch (...) {
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+
+			if (choice < 1 || choice > 2) {
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+			break;
+		}
+
+		switch (choice) {
+		case 1:
+			cout << "success";
+			break;
+		case 2:
+			return;
+		}
+	}
+}
+
 void UserInterface::search_by_name_menu() {
 
 	string title = " Search by Name ";
@@ -20,14 +275,28 @@ void UserInterface::search_by_name_menu() {
 			<< "1. Search" << endl
 			<< "2. Back to Main Menu";
 
+		string string_choice;
 		int choice;
-
 		while (true) {
 			cout << endl << "Option: ";
-			if (!(cin >> choice)) {
-				cout << "Choose Valid Option (1-2)";
-				cin.clear();
-				cin.ignore(10000, '\n');
+			getline(cin, string_choice);
+
+			if (string_choice.empty())
+			{
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+
+			try {
+				choice = stoi(string_choice);
+			}
+			catch (...) {
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+
+			if (choice < 1 || choice > 2) {
+				cout << endl << "Choose Valid Option (1-2)";
 				continue;
 			}
 			break;
@@ -59,14 +328,28 @@ void UserInterface::search_by_country_menu() {
 			<< "1. Search" << endl
 			<< "2. Back to Main Menu";
 
+		string string_choice;
 		int choice;
-
 		while (true) {
 			cout << endl << "Option: ";
-			if (!(cin >> choice)) {
-				cout << "Choose Valid Option (1-2)";
-				cin.clear();
-				cin.ignore(10000, '\n');
+			getline(cin, string_choice);
+
+			if (string_choice.empty())
+			{
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+
+			try {
+				choice = stoi(string_choice);
+			}
+			catch (...) {
+				cout << endl << "Choose Valid Option (1-2)";
+				continue;
+			}
+
+			if (choice < 1 || choice > 2) {
+				cout << endl << "Choose Valid Option (1-2)";
 				continue;
 			}
 			break;
@@ -124,8 +407,6 @@ void UserInterface::main_menu() {
 
 			if (choice < 1 || choice > 7) {
 				cout << endl << "Choose Valid Option (1-7)";
-				// cin.clear();
-				// cin.ignore(10000, '\n');
 				continue;
 			}
 			break;
@@ -133,26 +414,26 @@ void UserInterface::main_menu() {
 
 		switch (choice) {
 		case 1:
-			UserInterface::search_by_country_menu();
+			search_by_country_menu();
 			break;
 		case 2:
 			search_by_name_menu();
 			break;
 		case 3:
-			cout << "success";
+			search_by_iata_menu();
 			break;
 		case 4:
-			cout << "success";
+			count_by_type_menu();
 			break;
 		case 5:
-			cout << "success";
+			add_new_airport_menu();
 			break;
 		case 6:
-			cout << "success";
+			advanced_options_menu();
 			break;
 		case 7:
-			cout << "success";
-			break;
+			exit_menu();
+			break; // this will need to end the entire program
 		default:
 			cout << "Choose Valid Option (1-7)";
 		}
