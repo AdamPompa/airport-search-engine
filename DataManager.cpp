@@ -68,7 +68,7 @@ void DataManager::load_data() {
 		getline(cs, part, ',');
 		c.longitude = stod(part);
 
-		a.airport_coordinates = c;
+		c = a.airport_coordinates;
 
 		airport_vector.push_back(a);
 	}
@@ -88,7 +88,8 @@ void DataManager::add_airport (
 	string iata_code, 
 	string gps_code, 
 	string local_code, 
-	Coordinates airport_coordinates) {
+	double latitude,
+	double longitude) {
 
 	Airport new_airport;
 
@@ -104,13 +105,25 @@ void DataManager::add_airport (
 	new_airport.iata_code = iata_code;
 	new_airport.gps_code = gps_code;
 	new_airport.local_code = local_code;
-	new_airport.airport_coordinates = airport_coordinates;
+	new_airport.airport_coordinates.latitude = latitude;
+	new_airport.airport_coordinates.longitude = longitude;
 
 	airport_vector.push_back(new_airport);
 	data_change = true;
 }
 
+string DataManager::coord_to_string(Coordinates& c) {
+	return to_string(c.latitude) + "," + to_string(c.longitude);
+}
+
+string DataManager::escape_csv() {
+
+}
+
 void DataManager::save_data() {
+	if (data_change == true) {
+
+	}
 
 }
 

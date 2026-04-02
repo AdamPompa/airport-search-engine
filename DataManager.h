@@ -28,7 +28,25 @@ class DataManager {
 
 	public:
 		static void load_data();
-		static void add_airport(string ident, string type, string name, int elevation,string continent, string iso_country,string iso_region, string municipality,string icao_code, string iata_code,string gps_code, string local_code, Coordinates airport_coordinates);
+
+		static void add_airport(
+			string ident,
+			string type,
+			string name,
+			int elevation,
+			string continent,
+			string iso_country,
+			string iso_region,
+			string municipality,
+			string icao_code,
+			string iata_code,
+			string gps_code,
+			string local_code,
+			double latitude,
+			double longitude);
+		
+		static string coord_to_string(Coordinates& c);
+		static string escape_csv();
 		static void save_data();
 
 	private:
