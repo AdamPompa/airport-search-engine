@@ -21,7 +21,7 @@ struct Airport {
 	string iata_code;
 	string gps_code;
 	string local_code;
-	Coordinates airport_coordinates;
+	Coordinates coordinates;
 };
 
 class DataManager {
@@ -45,9 +45,9 @@ class DataManager {
 			double latitude,
 			double longitude);
 		
-		static string coord_to_string(Coordinates& c);
+		static string coord_to_string(const Coordinates& c);
 		static string escape_csv(const string& field);
-		static void save_data();
+		static void save_data(const vector <Airport>& airports);
 
 	private:
 		static bool data_change;

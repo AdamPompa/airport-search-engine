@@ -2,12 +2,13 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <stdexcept>
 #include "DataManager.h"
 using namespace std;
 
 bool DataManager::data_change = false;
 
-vector <Airport> airport_vector;
+vector <Airport> airports;
 
 void DataManager::load_data() {
 	ifstream original_file("airport-codes");
@@ -68,9 +69,9 @@ void DataManager::load_data() {
 		getline(cs, part, ',');
 		c.longitude = stod(part);
 
-		c = a.airport_coordinates;
+		c = a.coordinates;
 
-		airport_vector.push_back(a);
+		airports.push_back(a);
 	}
 
 }
@@ -105,14 +106,14 @@ void DataManager::add_airport (
 	new_airport.iata_code = iata_code;
 	new_airport.gps_code = gps_code;
 	new_airport.local_code = local_code;
-	new_airport.airport_coordinates.latitude = latitude;
-	new_airport.airport_coordinates.longitude = longitude;
+	new_airport.coordinates.latitude = latitude;
+	new_airport.coordinates.longitude = longitude;
 
-	airport_vector.push_back(new_airport);
+	airports.push_back(new_airport);
 	data_change = true;
 }
 
-string DataManager::coord_to_string(Coordinates& c) {
+string DataManager::coord_to_string(const Coordinates& c) {
 	return to_string(c.latitude) + "," + to_string(c.longitude);
 }
 
@@ -142,11 +143,34 @@ string DataManager::escape_csv(const string& element) {
 	}
 }
 
-void DataManager::save_data() {
+void DataManager::save_data(const vector <Airport>& airports) {
+	
 	if (data_change == true) {
-		
-	}
+		ofstream file("airport-codes");
 
+		if (!file) {
+			throw runtime_error("failed to open file");
+		}
+
+		file << "ident, type, name, elevation_ft, continent, iso_country, iso_region, municipality, icao_code, iata_code, gps_code, local_code, coordinates\n";
+
+		for (const auto& a : airports) {
+			file << escape_csv(a.ident) << ","
+				 << escape_csv(a.type) << ","
+				<< escape_csv(a.name) << ","
+				<< escape_csv(to_string(a.elevation)) << ","
+				<< escape_csv(a.continent) << ","
+				<< escape_csv(a.iso_country) << ","
+				<< escape_csv(a.iso_region) << ","
+				<< escape_csv(a.municipality) << ","
+				<< escape_csv(a.icao_code) << ","
+				<< escape_csv(a.iata_code) << ","
+				<< escape_csv(a.gps_code) << ","
+				<< escape_csv(a.local_code) << ","
+				<< escape_csv(coord_to_string(a.coordinates)) << "\n";
+		}
+		file.close();
+	}
 }
 
 
