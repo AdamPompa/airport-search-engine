@@ -116,13 +116,35 @@ string DataManager::coord_to_string(Coordinates& c) {
 	return to_string(c.latitude) + "," + to_string(c.longitude);
 }
 
-string DataManager::escape_csv() {
+string DataManager::escape_csv(const string& element) {
+	bool escape = false;
+	string result;
 
+	for (char c : element) {
+		if (c == '"') {
+			result += "\"\"";
+			escape = true;
+		}
+		else if (c == ',' || c == '\n' || c == '\r') {
+			result += c;
+			escape = true;
+		}
+		else {
+			result += c;
+		}
+	}
+
+	if (escape == true) {
+		return ("\"" + result + "\"");
+	}
+	else {
+		return result;
+	}
 }
 
 void DataManager::save_data() {
 	if (data_change == true) {
-
+		
 	}
 
 }

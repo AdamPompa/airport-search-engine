@@ -46,7 +46,7 @@ class DataManager {
 			double longitude);
 		
 		static string coord_to_string(Coordinates& c);
-		static string escape_csv();
+		static string escape_csv(const string& field);
 		static void save_data();
 
 	private:
