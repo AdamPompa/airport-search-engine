@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
-using namespace std;
-
+#include <vector>
 
 struct Coordinates {
 	double latitude;
@@ -9,45 +8,46 @@ struct Coordinates {
 };
 
 struct Airport {
-	string ident;
-	string type;
-	string name;
+	std::string ident;
+	std::string type;
+	std::string name;
 	int elevation;
-	string continent;
-	string iso_country;
-	string iso_region;
-	string municipality;
-	string icao_code;
-	string iata_code;
-	string gps_code;
-	string local_code;
+	std::string continent;
+	std::string iso_country;
+	std::string iso_region;
+	std::string municipality;
+	std::string icao_code;
+	std::string iata_code;
+	std::string gps_code;
+	std::string local_code;
 	Coordinates coordinates;
 };
 
 class DataManager {
 
 	public:
-		static void load_data();
+		static std::vector <Airport> airports;
+		static void load_data(const std::string& csv);
 
-		static void add_airport(
-			string ident,
-			string type,
-			string name,
+		static void add_airport (
+			std::string ident,
+			std::string type,
+			std::string name,
 			int elevation,
-			string continent,
-			string iso_country,
-			string iso_region,
-			string municipality,
-			string icao_code,
-			string iata_code,
-			string gps_code,
-			string local_code,
+			std::string continent,
+			std::string iso_country,
+			std::string iso_region,
+			std::string municipality,
+			std::string icao_code,
+			std::string iata_code,
+			std::string gps_code,
+			std::string local_code,
 			double latitude,
 			double longitude);
 		
-		static string coord_to_string(const Coordinates& c);
-		static string escape_csv(const string& field);
-		static void save_data(const vector <Airport>& airports);
+		static std::string coord_to_string(const Coordinates& c);
+		static std::string escape_csv(const std::string& field);
+		static void save_data(const std::vector <Airport>& airports);
 
 	private:
 		static bool data_change;

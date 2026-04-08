@@ -8,10 +8,10 @@ using namespace std;
 
 bool DataManager::data_change = false;
 
-vector <Airport> airports;
+vector <Airport> DataManager::airports;
 
-void DataManager::load_data() {
-	ifstream original_file("airport-codes");
+void DataManager::load_data(const string& csv) {
+	ifstream original_file(csv);
 	string header;
 	string row;
 
@@ -73,7 +73,6 @@ void DataManager::load_data() {
 
 		airports.push_back(a);
 	}
-
 }
 
 void DataManager::add_airport (

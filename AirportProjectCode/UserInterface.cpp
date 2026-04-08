@@ -1,8 +1,49 @@
 #include "UserInterface.h"
+#include "Datamanager.h"
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <vector>
+#include <iomanip>
 using namespace std;
+
+void::UserInterface::display_results(const vector<Airport>& airports, int index) {
+	Airport selected = airports[index];
+	string airport_name = " " + selected.name + " ";
+	int border_space = 75;
+	int name_border = round((border_space - airport_name.length()) / 2);
+
+	cout << string(name_border, '=')
+		<< airport_name 
+		<< string(name_border, '=')
+		<< endl;
+	
+	cout << setw(35) << "Identification: " << selected.ident
+		<< setw(35) << "Type: " << selected.type << endl
+
+		<< setw(35) << "Elevation: " << selected.elevation
+		<< setw(35) << "Continent: " << selected.continent << endl
+
+		<< setw(35) << "Country: " << selected.iso_country
+		<< setw(35) << "Region: " << selected.iso_region
+
+		<< setw(35) << "Municipality: " << selected.municipality
+		<< setw(35) << "ICAO Code: " << selected.icao_code
+
+		<< setw(35) << "IATA Code: " << selected.iata_code
+		<< setw(35) << "GPS Code: " << selected.gps_code
+
+		<< setw(35) << "Local Code: " << selected.local_code
+		<< setw(35) << "Coordinates: " << selected.coordinates.latitude << ", " << selected.coordinates.longitude;
+	
+	string input;
+	cout << "Press any key to exit: ";
+	getline(cin, input);
+
+	if (!input.empty()) {
+		return;
+	}
+}
 
 void UserInterface::exit_menu() {
 
