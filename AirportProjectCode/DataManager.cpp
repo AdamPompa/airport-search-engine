@@ -12,6 +12,10 @@ vector <Airport> DataManager::airports;
 
 void DataManager::load_data(const string& csv) {
 	ifstream original_file(csv);
+	if (!original_file.is_open()) {
+		cout << "Failed to open file" << endl;
+		return;
+	}
 	string header;
 	string row;
 
