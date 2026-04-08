@@ -25,16 +25,16 @@ void::UserInterface::display_results(const vector<Airport>& airports, int index)
 		<< setw(35) << "Continent: " << selected.continent << endl
 
 		<< setw(35) << "Country: " << selected.iso_country
-		<< setw(35) << "Region: " << selected.iso_region
+		<< setw(35) << "Region: " << selected.iso_region << endl
 
 		<< setw(35) << "Municipality: " << selected.municipality
-		<< setw(35) << "ICAO Code: " << selected.icao_code
+		<< setw(35) << "ICAO Code: " << selected.icao_code << endl
 
 		<< setw(35) << "IATA Code: " << selected.iata_code
-		<< setw(35) << "GPS Code: " << selected.gps_code
+		<< setw(35) << "GPS Code: " << selected.gps_code << endl
 
 		<< setw(35) << "Local Code: " << selected.local_code
-		<< setw(35) << "Coordinates: " << selected.coordinates.latitude << ", " << selected.coordinates.longitude;
+		<< setw(35) << "Coordinates: " << selected.coordinates.latitude << ", " << selected.coordinates.longitude << endl;
 	
 	string input;
 	cout << "Press any key to exit: ";
