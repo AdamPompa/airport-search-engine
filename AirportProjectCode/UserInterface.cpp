@@ -97,24 +97,26 @@ void UserInterface::display_results(const vector<Airport>& airports, int index) 
 		<< airport_name 
 		<< string(name_border, '=')
 		<< endl;
+
+	int coulumn_width = 18;
 	
-	cout << setw(35) << "Identification: " << selected.ident
-		<< setw(35) << "Type: " << selected.type << endl
+	cout << left << setw(coulumn_width) << "Identification:" << setw(coulumn_width) << selected.ident
+		<< setw(coulumn_width) << "Type:" << setw(coulumn_width) << selected.type << endl
 
-		<< setw(35) << "Elevation: " << selected.elevation
-		<< setw(35) << "Continent: " << selected.continent << endl
+		<< setw(coulumn_width) << "Elevation:" << setw(coulumn_width) << selected.elevation
+		<< setw(coulumn_width) << "Continent:" << setw(coulumn_width) << selected.continent << endl
 
-		<< setw(35) << "Country: " << selected.iso_country
-		<< setw(35) << "Region: " << selected.iso_region << endl
+		<< setw(coulumn_width) << "Country:" << setw(coulumn_width) << selected.iso_country
+		<< setw(coulumn_width) << "Region:" << setw(coulumn_width) << selected.iso_region << endl
 
-		<< setw(35) << "Municipality: " << selected.municipality
-		<< setw(35) << "ICAO Code: " << selected.icao_code << endl
+		<< setw(coulumn_width) << "Municipality:" << setw(coulumn_width) << selected.municipality
+		<< setw(coulumn_width) << "ICAO Code:" << setw(coulumn_width) << selected.icao_code << endl
 
-		<< setw(35) << "IATA Code: " << selected.iata_code
-		<< setw(35) << "GPS Code: " << selected.gps_code << endl
+		<< setw(coulumn_width) << "IATA Code:" << setw(coulumn_width) << selected.iata_code
+		<< setw(coulumn_width) << "GPS Code:" << setw(coulumn_width) << selected.gps_code << endl
 
-		<< setw(35) << "Local Code: " << selected.local_code
-		<< setw(35) << "Coordinates: " << selected.coordinates << endl;
+		<< setw(coulumn_width) << "Local Code:" << setw(coulumn_width) << selected.local_code
+		<< setw(coulumn_width) << "Coordinates:" << setw(coulumn_width) << selected.coordinates << endl;
 	
 	string input;
 	cout << "Press any key to exit: ";
