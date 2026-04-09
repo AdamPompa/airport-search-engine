@@ -11,6 +11,7 @@ class UserInterface {
 	static void search_by_iata_menu();
 	static void count_by_type_menu();
 	static void add_new_airport_menu();
+	static void fill_new_airport(Airport& a);
 	static void advanced_options_menu();
 	static void exit_menu();
 	static void display_results(const std::vector <Airport>& airport, int index);

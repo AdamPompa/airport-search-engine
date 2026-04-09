@@ -7,7 +7,87 @@
 #include <iomanip>
 using namespace std;
 
-void::UserInterface::display_results(const vector<Airport>& airports, int index) {
+void UserInterface::fill_new_airport(Airport& a) {
+	cout << "Enter Identification: ";
+	getline(cin, a.ident);
+	if (a.ident.find_first_not_of(" \t\n\r") == string::npos) {
+		a.ident = "";
+	}
+
+	cout << "Enter Type: ";
+	getline(cin, a.type);
+	if (a.type.find_first_not_of(" \t\n\r") == string::npos) {
+		a.type = "";
+	}
+
+	cout << "Enter Name: ";
+	getline(cin, a.name);
+	if (a.name.find_first_not_of(" \t\n\r") == string::npos) {
+		a.name = "";
+	}
+
+	cout << "Enter Elevation: ";
+	getline(cin, a.elevation);
+	if (a.elevation.find_first_not_of(" \t\n\r") == string::npos) {
+		a.elevation = "";
+	}
+
+	cout << "Enter Continent: ";
+	getline(cin, a.continent);
+	if (a.continent.find_first_not_of(" \t\n\r") == string::npos) {
+		a.continent = "";
+	}
+
+	cout << "Enter Country: ";
+	getline(cin, a.iso_country);
+	if (a.iso_country.find_first_not_of(" \t\n\r") == string::npos) {
+		a.iso_country = "";
+	}
+
+	cout << "Enter Region: ";
+	getline(cin, a.iso_region);
+	if (a.iso_region.find_first_not_of(" \t\n\r") == string::npos) {
+		a.iso_region = "";
+	}
+
+	cout << "Enter Municipality: ";
+	getline(cin, a.municipality);
+	if (a.municipality.find_first_not_of(" \t\n\r") == string::npos) {
+		a.municipality = "";
+	}
+
+	cout << "Enter ICAO Code: ";
+	getline(cin, a.icao_code);
+	if (a.icao_code.find_first_not_of(" \t\n\r") == string::npos) {
+		a.icao_code = "";
+	}
+
+	cout << "Enter IATA Code: ";
+	getline(cin, a.iata_code);
+	if (a.iata_code.find_first_not_of(" \t\n\r") == string::npos) {
+		a.iata_code = "";
+	}
+
+	cout << "Enter GPS Code: ";
+	getline(cin, a.gps_code);
+	if (a.gps_code.find_first_not_of(" \t\n\r") == string::npos) {
+		a.gps_code = "";
+	}
+
+	cout << "Enter Local Code: ";
+	getline(cin, a.local_code);
+	if (a.local_code.find_first_not_of(" \t\n\r") == string::npos) {
+		a.local_code = "";
+	}
+
+	cout << "Enter Coordinates: ";
+	getline(cin, a.coordinates);
+	if (a.coordinates.find_first_not_of(" \t\n\r") == string::npos) {
+		a.coordinates = "";
+	}
+}
+
+void UserInterface::display_results(const vector<Airport>& airports, int index) {
 	Airport selected = airports[index];
 	string airport_name = " " + selected.name + " ";
 	int border_space = 75;
@@ -34,7 +114,7 @@ void::UserInterface::display_results(const vector<Airport>& airports, int index)
 		<< setw(35) << "GPS Code: " << selected.gps_code << endl
 
 		<< setw(35) << "Local Code: " << selected.local_code
-		<< setw(35) << "Coordinates: " << selected.coordinates.latitude << ", " << selected.coordinates.longitude << endl;
+		<< setw(35) << "Coordinates: " << selected.coordinates << endl;
 	
 	string input;
 	cout << "Press any key to exit: ";
