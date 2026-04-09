@@ -80,17 +80,23 @@ void UserInterface::fill_new_airport(Airport& a) {
 		a.local_code = "";
 	}
 
-	cout << "Enter Coordinates: ";
-	getline(cin, a.coordinates);
-	if (a.coordinates.find_first_not_of(" \t\n\r") == string::npos) {
-		a.coordinates = "";
+	cout << "Enter Latitude: ";
+	getline(cin, a.latitude);
+	if (a.latitude.find_first_not_of(" \t\n\r") == string::npos) {
+		a.latitude = "";
+	}
+
+	cout << "Enter Longitude: ";
+	getline(cin, a.longitude);
+	if (a.longitude.find_first_not_of(" \t\n\r") == string::npos) {
+		a.longitude = "";
 	}
 }
 
 void UserInterface::display_results(const vector<Airport>& airports, int index) {
 	Airport selected = airports[index];
 	string airport_name = " " + selected.name + " ";
-	int border_space = 75;
+	int border_space = 80;
 	int name_border = round((border_space - airport_name.length()) / 2);
 
 	cout << string(name_border, '=')
@@ -116,7 +122,7 @@ void UserInterface::display_results(const vector<Airport>& airports, int index) 
 		<< setw(coulumn_width) << "GPS Code:" << setw(coulumn_width) << selected.gps_code << endl
 
 		<< setw(coulumn_width) << "Local Code:" << setw(coulumn_width) << selected.local_code
-		<< setw(coulumn_width) << "Coordinates:" << setw(coulumn_width) << selected.coordinates << endl;
+		<< setw(coulumn_width) << "Coordinates:" << selected.latitude << "," << selected.longitude << endl;
 	
 	string input;
 	cout << "Press any key to exit: ";

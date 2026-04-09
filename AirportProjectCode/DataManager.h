@@ -15,7 +15,8 @@ struct Airport {
 	std::string iata_code;
 	std::string gps_code;
 	std::string local_code;
-	std::string coordinates;
+	std::string latitude;
+	std::string longitude;
 };
 
 class DataManager {

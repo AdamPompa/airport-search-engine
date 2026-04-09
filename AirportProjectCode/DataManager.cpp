@@ -28,19 +28,20 @@ void DataManager::load_data(const string& csv) {
 		string field;
 		Airport a;
 
-		getline(ss, a.ident, ',');
-		getline(ss, a.type, ',');
-		getline(ss, a.name, ',');
-		getline(ss, a.elevation, ',');
-		getline(ss, a.continent, ',');		
-		getline(ss, a.iso_country, ',');
-		getline(ss, a.iso_region, ',');		
-		getline(ss, a.municipality, ',');
-		getline(ss, a.icao_code, ',');		
-		getline(ss, a.iata_code, ',');
-		getline(ss, a.gps_code, ',');	
-		getline(ss, a.local_code, ',');
-		getline(ss, a.coordinates, ',');
+		getline (ss, a.ident, ',');
+		getline (ss, a.type, ',');
+		getline (ss, a.name, ',');
+		getline (ss, a.elevation, ',');
+		getline (ss, a.continent, ',');		
+		getline (ss, a.iso_country, ',');
+		getline (ss, a.iso_region, ',');		
+		getline (ss, a.municipality, ',');
+		getline (ss, a.icao_code, ',');		
+		getline (ss, a.iata_code, ',');
+		getline (ss, a.gps_code, ',');	
+		getline (ss, a.local_code, ',');
+		getline (ss, a.latitude, ',');
+		getline (ss, a.longitude, ',');
 
 		airports.push_back(a);
 	}
@@ -89,8 +90,7 @@ void DataManager::save_data(const vector <Airport>& airports) {
 			throw runtime_error("failed to open file");
 		}
 
-		file << "ident, type, name, elevation_ft, continent, iso_country, iso_region, municipality, icao_code, iata_code, gps_code, local_code, coordinates\n";
-
+		file << "ident,type,name,elevation_ft,continent,iso_country,iso_region,municipality,icao_code,iata_code,gps_code,local_code,coordinates\n";
 		for (const auto& a : airports) {
 			file << escape_csv(a.ident) << ","
 				 << escape_csv(a.type) << ","
@@ -104,7 +104,7 @@ void DataManager::save_data(const vector <Airport>& airports) {
 				<< escape_csv(a.iata_code) << ","
 				<< escape_csv(a.gps_code) << ","
 				<< escape_csv(a.local_code) << ","
-				<< escape_csv(a.coordinates) << "\n";
+				<< escape_csv(a.latitude + "," + a.longitude) << "\n";
 		}
 		file.close();
 	}
