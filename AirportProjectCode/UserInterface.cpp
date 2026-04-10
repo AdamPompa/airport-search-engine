@@ -183,6 +183,7 @@ void UserInterface::exit_menu() {
 		case 2:
 			return;
 		}
+		break;
 	}
 }
 
@@ -499,8 +500,8 @@ void UserInterface::main_menu() {
 	string title = " Main Menu ";
 	int border_space = 50;
 	int menu_border = round((border_space - title.length()) / 2);
-
-	while (true) {
+	bool running = true;
+	while (running) {
 		cout << string(menu_border, '=')
 			<< title
 			<< string(menu_border, '=')
@@ -563,7 +564,8 @@ void UserInterface::main_menu() {
 			break;
 		case 7:
 			exit_menu();
-			break; // this will need to end the entire program
+			running = false;
+			break;
 		default:
 			cout << "Choose Valid Option (1-7)";
 		}
