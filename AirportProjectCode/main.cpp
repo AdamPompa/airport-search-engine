@@ -3,6 +3,6 @@
 
 int main() {
 	DataManager::load_data("airport-test-codes.txt");
-	UserInterface::display_results(DataManager::airports, 1);
+	UserInterface::main_menu();
 	return 0;
 }

@@ -177,7 +177,8 @@ void UserInterface::exit_menu() {
 
 		switch (choice) {
 		case 1:
-			cout << "success";
+			cout << "See you next time";
+			DataManager::save_data(DataManager::airports);
 			break;
 		case 2:
 			return;
@@ -281,7 +282,7 @@ void UserInterface::add_new_airport_menu() {
 
 		switch (choice) {
 		case 1:
-			cout << "success";
+			DataManager::add_airport();
 			break;
 		case 2:
 			return;
