@@ -1,5 +1,6 @@
 #include "UserInterface.h"
 #include "Datamanager.h"
+#include "Logic.h"
 #include <iostream>
 #include <cmath>
 #include <string>
@@ -7,18 +8,63 @@
 #include <iomanip>
 using namespace std;
 
+int UserInterface::type_select() {
+	cout << "Select Type:" << endl
+		<< "1. Small Airport" << endl
+		<< "2. Large Aiport" << endl
+		<< "3. Heliport" << endl;
+
+	string string_choice;
+	int choice;
+	while (true) {
+		cout << endl << "Option: ";
+		getline(cin, string_choice);
+
+		if (string_choice.empty())
+		{
+			cout << endl << "Choose Valid Option (1-3)";
+			continue;
+		}
+
+		try {
+			choice = stoi(string_choice);
+		}
+		catch (...) {
+			cout << endl << "Choose Valid Option (1-3)";
+			continue;
+		}
+
+		if (choice < 1 || choice > 3) {
+			cout << endl << "Choose Valid Option (1-3)";
+			continue;
+		}
+		break;
+	}
+	return choice;
+}
+
 void UserInterface::fill_new_airport(Airport& a) {
+	int type_selected;
+
 	cout << "Enter Identification: ";
 	getline(cin, a.ident);
 	if (a.ident.find_first_not_of(" \t\n\r") == string::npos) {
 		a.ident = "";
 	}
 
-	cout << "Enter Type: ";
-	getline(cin, a.type);
-	if (a.type.find_first_not_of(" \t\n\r") == string::npos) {
-		a.type = "";
+	type_selected = type_select();
+	switch (type_selected) {
+		case 1:
+		a.type = "small_airport";
+		break;
+		case 2:
+		a.type = "large_airport";
+		break;
+		case 3:
+		a.type = "heliport";
+		break;
 	}
+	
 
 	cout << "Enter Name: ";
 	getline(cin, a.name);
@@ -303,7 +349,11 @@ void UserInterface::count_by_type_menu() {
 			<< string(menu_border, '=')
 			<< endl;
 
-		// count function here
+		vector<int> count = Logic::type_counter(DataManager::airports);
+
+		cout << left << setw(20) << "Small Aiports:" << count.at(0) << endl
+			<< setw(20) << "Large Airport:" << count.at(1) << endl
+			<< setw(20) << "Heliports:" << count.at(2) << endl;
 
 		cout << "1. Back to Main Menu";
 
@@ -315,10 +365,9 @@ void UserInterface::count_by_type_menu() {
 
 			if (string_choice.empty())
 			{
-				cout << endl << "Choose Valid Option (1)";
+				cout << endl << "Choose Valid Option (0)";
 				continue;
 			}
-
 			try {
 				choice = stoi(string_choice);
 			}
@@ -326,9 +375,8 @@ void UserInterface::count_by_type_menu() {
 				cout << endl << "Choose Valid Option (1)";
 				continue;
 			}
-
 			if (choice != 1) {
-				cout << endl << "Choose Valid Option (1)";
+				cout << endl << "Choose Valid Option (2)";
 				continue;
 			}
 			break;
