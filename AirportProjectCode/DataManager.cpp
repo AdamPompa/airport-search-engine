@@ -110,4 +110,11 @@ void DataManager::save_data(const vector <Airport>& airports) {
 	}
 }
 
+void DataManager::make_maps(const std::vector<Airport>& airports) {
+	for (int i = 0; airports.size(); i++) {
+		iata_map [airports[i].iata_code] = i;
+		country_map.insert({airports[i].iso_country, i});
+	}
+}
+
 

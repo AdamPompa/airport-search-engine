@@ -31,3 +31,12 @@ vector<int> Logic::type_counter(const std::vector<Airport>& airports) {
 	return type_count;
 }
 
+vector<int> Logic::search_by_country(const std::string& query) {
+	//multimap
+}
+vector<int> Logic::search_by_name(const std::string& query) {
+	//find()
+}
+vector<int> Logic::search_by_IATA(const std::string& query) {
+	//unordered map
+}
