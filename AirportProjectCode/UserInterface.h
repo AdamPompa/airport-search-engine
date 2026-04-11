@@ -16,5 +16,4 @@ class UserInterface {
 	static void advanced_options_menu();
 	static void exit_menu();
 	static void display_results(const std::vector <Airport>& airport, int index);
-	static void display_count();
 };
