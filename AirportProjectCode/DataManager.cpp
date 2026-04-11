@@ -11,6 +11,9 @@ bool DataManager::data_change = false;
 
 vector <Airport> DataManager::airports;
 
+unordered_map<string, int> DataManager::iata_map;
+multimap<string, int> DataManager::country_map;
+
 void DataManager::load_data(const string& csv) {
 	ifstream original_file(csv);
 
@@ -53,6 +56,7 @@ void DataManager::add_airport () {
 	UserInterface::fill_new_airport(new_airport);
 	DataManager::airports.push_back(new_airport);
 	data_change = true;
+	make_maps(DataManager::airports);
 }
 
 string DataManager::escape_csv(const string& element) {

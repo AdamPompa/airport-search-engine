@@ -32,11 +32,32 @@ vector<int> Logic::type_counter(const std::vector<Airport>& airports) {
 }
 
 vector<int> Logic::search_by_country(const std::string& query) {
-	//multimap
+	vector<int> results;
+
+	auto range = DataManager::country_map.equal_range(query);
+	for (auto itr = range.first; itr != range.second; itr++) {
+		results.push_back(itr->second);
+	}
+	return results;
 }
-vector<int> Logic::search_by_name(const std::string& query) {
-	//find()
+
+vector<int> Logic::search_by_name(const std::string& query, const std::vector<Airport>& airports) {
+	vector<int> results;
+
+	for (int i = 0; i < airports.size(); i++) {
+		if (airports[i].name.find(query) != true) {
+			results.push_back(i);
+		}
+	}
+
+	return results;
 }
-vector<int> Logic::search_by_IATA(const std::string& query) {
-	//unordered map
+
+int Logic::search_by_IATA(const std::string& query) {
+	int result;
+	
+	auto itr = DataManager::iata_map.find(query);
+	result = itr->second;
+	
+	return result;
 }
