@@ -67,14 +67,26 @@ int UserInterface::type_select() {
 	return choice;
 }
 
+string UserInterface::trim(const std::string& input) {
+	size_t pos = input.find_first_not_of(" \t\n\r");
+	size_t length = (input.find_last_not_of(" \t\n\r") - pos);
+	return input.substr(pos, length + 1);
+}
+
+string UserInterface::input_check() {
+	string input;
+	do {
+		getline(cin, input);
+	}
+	while (input.find_first_not_of(" \t\n\r") == string::npos);
+	return input;
+}
+
 void UserInterface::fill_new_airport(Airport& a) {
 	int type_selected;
 
 	cout << "Enter Identification: ";
-	getline(cin, a.ident);
-	if (a.ident.find_first_not_of(" \t\n\r") == string::npos) {
-		a.ident = "";
-	}
+	a.ident = trim(input_check());
 
 	type_selected = type_select();
 	switch (type_selected) {
@@ -89,72 +101,42 @@ void UserInterface::fill_new_airport(Airport& a) {
 		break;
 	}
 	
-
 	cout << "Enter Name: ";
-	getline(cin, a.name);
-	if (a.name.find_first_not_of(" \t\n\r") == string::npos) {
-		a.name = "";
-	}
+	a.name = trim(input_check());
 
 	cout << "Enter Elevation: ";
-	getline(cin, a.elevation);
-	if (a.elevation.find_first_not_of(" \t\n\r") == string::npos) {
-		a.elevation = "";
-	}
+	a.elevation = trim(input_check());
 
 	cout << "Enter Continent: ";
-	getline(cin, a.continent);
-	if (a.continent.find_first_not_of(" \t\n\r") == string::npos) {
-		a.continent = "";
-	}
+	a.continent = trim(input_check());
 
 	cout << "Enter Country: ";
-	getline(cin, a.iso_country);
-	if (a.iso_country.find_first_not_of(" \t\n\r") == string::npos) {
-		a.iso_country = "";
-	}
+	a.iso_country = trim(input_check());
 
 	cout << "Enter Region: ";
-	getline(cin, a.iso_region);
-	if (a.iso_region.find_first_not_of(" \t\n\r") == string::npos) {
-		a.iso_region = "";
-	}
+	a.iso_region = trim(input_check());
 
 	cout << "Enter Municipality: ";
-	getline(cin, a.municipality);
-	if (a.municipality.find_first_not_of(" \t\n\r") == string::npos) {
-		a.municipality = "";
-	}
+	a.municipality = trim(input_check());
 
 	cout << "Enter ICAO Code: ";
-	getline(cin, a.icao_code);
-	if (a.icao_code.find_first_not_of(" \t\n\r") == string::npos) {
-		a.icao_code = "";
-	}
+	a.icao_code = trim(input_check());
 
 	cout << "Enter IATA Code: ";
-	getline(cin, a.iata_code);
-	if (a.iata_code.find_first_not_of(" \t\n\r") == string::npos) {
-		a.iata_code = "";
-	}
+	a.iata_code = trim(input_check());
 
 	cout << "Enter GPS Code: ";
-	getline(cin, a.gps_code);
-	if (a.gps_code.find_first_not_of(" \t\n\r") == string::npos) {
-		a.gps_code = "";
-	}
+	a.gps_code = trim(input_check());
 
 	cout << "Enter Local Code: ";
-	getline(cin, a.local_code);
-	if (a.local_code.find_first_not_of(" \t\n\r") == string::npos) {
-		a.local_code = "";
-	}
+	a.local_code = trim(input_check());
 
-	cout << "Enter Coordinates (latitude,longitude): ";
-	getline(cin, a.coordinates);
-	if (a.coordinates.find_first_not_of(" \t\n\r") == string::npos) {
-		a.coordinates = "";
-	}
+	string latitude, longitude;
+	cout << "Enter Latitude: ";
+	latitude = trim(input_check());
+	cout << "Enter Longitude: ";
+	longitude = trim(input_check());
+	a.coordinates = latitude + "," + longitude;
 }
 
 void UserInterface::display_result(const vector<Airport>& airports, int index) {

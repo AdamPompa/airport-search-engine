@@ -14,7 +14,7 @@ vector <Airport> DataManager::airports;
 unordered_map<string, int> DataManager::iata_map;
 multimap<string, int> DataManager::country_map;
 
-std::vector<string> DataManager::parse_csv(const string& row) {
+vector<string> DataManager::parse_csv(const string& row) {
 	vector<string> results;
 	string field;
 	bool in_quotes = false;

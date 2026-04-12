@@ -18,4 +18,6 @@ class UserInterface {
 	static void exit_menu();
 	static void display_result(const std::vector <Airport>& airport, int index);
 	static int page_results();
+	static std::string input_check();
+	static std::string trim(const std::string& input);
 };
