@@ -9,6 +9,7 @@ class UserInterface {
 	static void search_by_country_menu();
 	static void search_by_name_menu();
 	static void search_by_iata_menu();
+	static void iata_searchbar();
 	static void count_by_type_menu();
 	static void add_new_airport_menu();
 	static int type_select();

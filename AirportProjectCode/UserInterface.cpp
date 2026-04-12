@@ -8,6 +8,30 @@
 #include <iomanip>
 using namespace std;
 
+void UserInterface::iata_searchbar() {
+	string query;
+
+	while (true) {
+		cout << endl << "Search: ";
+		getline(cin, query);
+
+		if (query.empty())
+		{
+			cout << endl << "(enter search term)";
+			continue;
+		}
+
+		if (query.length() < 3 || query.length() > 4) {
+			cout << endl << "(IATA codes should be 3 or 4 letters)";
+			continue;
+		}
+		break;
+	}
+
+	int result = Logic::search_by_IATA(query, DataManager::iata_map);
+	UserInterface::display_result(DataManager::airports, result);
+}
+
 int UserInterface::type_select() {
 	cout << "Select Type:" << endl
 		<< "1. Small Airport" << endl
@@ -429,13 +453,9 @@ void UserInterface::search_by_iata_menu() {
 		}
 
 		switch (choice) {
-		case 1: {
-			string search_term;
-			cout << "search: ";
-			cin >> search_term;
-			int result = Logic::search_by_IATA(search_term, DataManager::iata_map);
-			UserInterface::display_result(DataManager::airports, result);
-			break;}
+		case 1: 
+			iata_searchbar();
+			break;
 		case 2:
 			return;
 		}
