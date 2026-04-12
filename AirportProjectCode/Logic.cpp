@@ -65,7 +65,11 @@ const std::unordered_map<std::string, int>& iatas) {
 	int result;
 	
 	auto itr = iatas.find(query);
-	result = itr->second;
-	
-	return result;
+	if (itr == iatas.end()) {
+		return -1;
+	}
+	else {
+		result = itr->second;
+		return result;
+	}
 }
