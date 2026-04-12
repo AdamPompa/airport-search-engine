@@ -139,7 +139,7 @@ void UserInterface::fill_new_airport(Airport& a) {
 	}
 }
 
-void UserInterface::display_results(const vector<Airport>& airports, int index) {
+void UserInterface::display_result(const vector<Airport>& airports, int index) {
 	Airport selected = airports[index];
 	string airport_name = " " + selected.name + " ";
 	int border_space = 80;
@@ -429,9 +429,13 @@ void UserInterface::search_by_iata_menu() {
 		}
 
 		switch (choice) {
-		case 1:
-			cout << "success";
-			break;
+		case 1: {
+			string search_term;
+			cout << "search: ";
+			cin >> search_term;
+			int result = Logic::search_by_IATA(search_term, DataManager::iata_map);
+			UserInterface::display_result(DataManager::airports, result);
+			break;}
 		case 2:
 			return;
 		}
