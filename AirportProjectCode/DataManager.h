@@ -17,13 +17,13 @@ struct Airport {
 	std::string iata_code;
 	std::string gps_code;
 	std::string local_code;
-	std::string latitude;
-	std::string longitude;
+	std::string coordinates;
 };
 
 class DataManager {
 	public:
 		static std::vector <Airport> airports;
+		static std::vector<std::string> parse_csv(const std::string& row);
 		static void load_data(const std::string& csv);
 		static void add_airport ();
 		static std::string escape_csv(const std::string& field);

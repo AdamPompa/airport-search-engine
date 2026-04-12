@@ -14,6 +14,35 @@ vector <Airport> DataManager::airports;
 unordered_map<string, int> DataManager::iata_map;
 multimap<string, int> DataManager::country_map;
 
+std::vector<string> DataManager::parse_csv(const string& row) {
+	vector<string> results;
+	string field;
+	bool in_quotes = false;
+
+	for (int i = 0; i < row.length(); i++) {
+		char c = row[i];
+
+		if (c == '"') {
+			if (in_quotes && i + 1 < row.length() && row[i + 1] == '"') {
+				field += '"';
+				i++;
+			}
+			else {
+				in_quotes = !in_quotes;
+			}
+		}
+		else if (c == ',' && in_quotes == false) {
+			results.push_back(field);
+			field.clear();
+		}
+		else {
+			field += c;
+		}
+	}
+	results.push_back(field);
+	return results;
+}
+
 void DataManager::load_data(const string& csv) {
 	ifstream original_file(csv);
 
@@ -27,24 +56,22 @@ void DataManager::load_data(const string& csv) {
 	getline(original_file, header);
 
 	while (getline(original_file, row)) {
-		stringstream ss(row);
-		string field;
+		vector<string> field = parse_csv(row);
 		Airport a;
 
-		getline (ss, a.ident, ',');
-		getline (ss, a.type, ',');
-		getline (ss, a.name, ',');
-		getline (ss, a.elevation, ',');
-		getline (ss, a.continent, ',');		
-		getline (ss, a.iso_country, ',');
-		getline (ss, a.iso_region, ',');		
-		getline (ss, a.municipality, ',');
-		getline (ss, a.icao_code, ',');		
-		getline (ss, a.iata_code, ',');
-		getline (ss, a.gps_code, ',');	
-		getline (ss, a.local_code, ',');
-		getline (ss, a.latitude, ',');
-		getline (ss, a.longitude, ',');
+		a.ident = field[0];
+		a.type = field[1];
+		a.name = field[2];
+		a.elevation = field[3];
+		a.continent = field[4];
+		a.iso_country = field[5];
+		a.iso_region = field[6];
+		a.municipality = field[7];
+		a.icao_code = field[8];
+		a.iata_code = field[9];
+		a.gps_code = field[10];
+		a.local_code = field[11];
+		a.coordinates = field[12];
 
 		airports.push_back(a);
 	}
@@ -108,7 +135,7 @@ void DataManager::save_data(const vector <Airport>& airports) {
 				<< escape_csv(a.iata_code) << ","
 				<< escape_csv(a.gps_code) << ","
 				<< escape_csv(a.local_code) << ","
-				<< escape_csv(a.latitude + "," + a.longitude) << "\n";
+				<< escape_csv(a.coordinates) << "\n";
 		}
 		file.close();
 	}

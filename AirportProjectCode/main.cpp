@@ -3,7 +3,7 @@
 
 int main() {
 	DataManager::load_data("airport-test-codes.txt");
-	DataManager::make_maps(DataManager::airports);
+	UserInterface::display_result(DataManager::airports, 3);
 	UserInterface::main_menu();
 	return 0;
 }
