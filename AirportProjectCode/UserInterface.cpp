@@ -11,25 +11,14 @@ using namespace std;
 void UserInterface::iata_searchbar() {
 	string query;
 
-	while (true) {
+	do {
 		cout << endl << "Search: ";
 		getline(cin, query);
-
-		if (query.empty())
-		{
-			cout << endl << "(enter search term)";
-			continue;
-		}
-
-		if (query.length() < 3 || query.length() > 4) {
-			cout << endl << "(IATA codes should be 3 or 4 letters)";
-			continue;
-		}
-		break;
-	}
+	} while (query.empty() || query.length() < 3 || query.length() > 4);
 
 	int result = Logic::search_by_IATA(query, DataManager::iata_map);
-	UserInterface::display_result(DataManager::airports, result);
+	display_result(DataManager::airports, result);
+	return;
 }
 
 int UserInterface::type_select() {
@@ -100,7 +89,7 @@ void UserInterface::fill_new_airport(Airport& a) {
 		a.type = "heliport";
 		break;
 	}
-	
+
 	cout << "Enter Name: ";
 	a.name = trim(input_check());
 

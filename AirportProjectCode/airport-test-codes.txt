@@ -23,5 +23,3 @@ ident,type,name,elevation_ft,continent,iso_country,iso_region,municipality,icao_
 00KY,small_airport,Robbins Roost Airport,1265,NA,US,US-KY,Stanford,,,00KY,00KY,"37.409400939941406, -84.61969757080078"
 00LA,heliport,Shell Chemical East Site Heliport,15,NA,US,US-LA,Gonzales,,,00LA,00LA,"30.191944, -90.980833"
 00LL,heliport,Ac & R Components Heliport,600,NA,US,US-IL,Chatham,,,00LL,00LL,"39.66529846191406, -89.70559692382812"
-
-
