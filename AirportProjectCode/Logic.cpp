@@ -47,15 +47,13 @@ const std::multimap<std::string, int>& countries) {
 vector<int> Logic::search_by_name(
 const std::string& query,
 const std::vector<Airport>& airports) {
-
 	vector<int> results;
 
 	for (int i = 0; i < airports.size(); i++) {
-		if (airports[i].name.find(query) != true) {
+		if (airports[i].name.find(query) = true) {
 			results.push_back(i);
 		}
 	}
-
 	return results;
 }
 
