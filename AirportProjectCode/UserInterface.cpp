@@ -416,6 +416,19 @@ void UserInterface::search_by_iata_menu() {
 	}
 }
 
+void UserInterface::name_searchbar() {
+	string query;
+	do {
+		cout << endl << "Search (4 character minimum): ";
+		getline(cin, query);
+	} while (query.empty() || query.length() < 4);
+
+	vector<int> results = Logic::search_by_name(query, DataManager::airports);
+	cout << results.size();
+	cout << endl;
+	return;
+}
+
 void UserInterface::search_by_name_menu() {
 
 	string title = " Search by Name ";
@@ -461,7 +474,7 @@ void UserInterface::search_by_name_menu() {
 
 		switch (choice) {
 		case 1:
-			cout << "success";
+			name_searchbar();
 			break;
 		case 2:
 			return;
