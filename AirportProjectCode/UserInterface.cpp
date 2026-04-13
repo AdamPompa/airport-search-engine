@@ -474,8 +474,9 @@ void UserInterface::country_searchbar() {
 	do {
 		cout << endl << "Search: ";
 		getline(cin, query);
-	} while (query.empty() || query.length() != 2);
+	} while (query.empty() || query.length() != 2 || !isalpha(query[0]) || !isalpha(query[1]));
 
+	std::transform(query.begin(), query.end(), query.begin(), ::toupper);
 	vector<int> results = Logic::search_by_country(query, DataManager::country_map);
 	cout << results.size();
 	cout << endl;
