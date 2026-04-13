@@ -17,8 +17,15 @@ void UserInterface::iata_searchbar() {
 	} while (query.empty() || query.length() < 3 || query.length() > 4);
 
 	int result = Logic::search_by_IATA(query, DataManager::iata_map);
-	display_result(DataManager::airports, result);
-	return;
+	if (result == -1)
+	{
+		cout << "Code Not Found" << endl;
+		return;
+	}
+	else {
+		display_result(DataManager::airports, result);
+		return;
+	}
 }
 
 int UserInterface::type_select() {
