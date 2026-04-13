@@ -69,6 +69,9 @@ int UserInterface::type_select() {
 
 string UserInterface::trim(const std::string& input) {
 	size_t pos = input.find_first_not_of(" \t\n\r");
+	if (pos == std::string::npos) {
+		return "";
+	}
 	size_t length = (input.find_last_not_of(" \t\n\r") - pos);
 	return input.substr(pos, length + 1);
 }
@@ -421,9 +424,9 @@ void UserInterface::name_searchbar() {
 	do {
 		cout << endl << "Search (4 character minimum): ";
 		getline(cin, query);
+		query = trim(query);
 	} while (query.empty() || query.length() < 4);
 
-	query = trim(query);
 	transform(query.begin(), query.end(), query.begin(), ::tolower);
 
 	vector<int> results = Logic::search_by_name(query, DataManager::airports);
