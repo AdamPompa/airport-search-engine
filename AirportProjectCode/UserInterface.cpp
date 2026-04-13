@@ -12,13 +12,13 @@ using namespace std;
 
 void UserInterface::iata_searchbar() {
 	string query;
-	std::transform(query.begin(), query.end(), query.begin(), ::toupper);
 
 	do {
 		cout << endl << "Search: ";
 		getline(cin, query);
 	} while (query.empty() || query.length() < 3 || query.length() > 4);
 
+	std::transform(query.begin(), query.end(), query.begin(), ::toupper);
 	int result = Logic::search_by_IATA(query, DataManager::iata_map);
 	if (result == -1)
 	{
