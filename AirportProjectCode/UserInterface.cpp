@@ -423,6 +423,9 @@ void UserInterface::name_searchbar() {
 		getline(cin, query);
 	} while (query.empty() || query.length() < 4);
 
+	transform(query.begin(), query.end(), query.begin(), ::tolower);
+	query = trim(query);
+
 	vector<int> results = Logic::search_by_name(query, DataManager::airports);
 	cout << results.size();
 	cout << endl;

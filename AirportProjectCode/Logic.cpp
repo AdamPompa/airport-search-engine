@@ -1,5 +1,8 @@
 #include "Logic.h"
 #include <iostream>
+#include <cctype>
+#include <algorithm>
+#include <string>
 using namespace std;
 
 vector<int> Logic::type_counter(const std::vector<Airport>& airports) {
@@ -45,12 +48,15 @@ const std::multimap<std::string, int>& countries) {
 }
 
 vector<int> Logic::search_by_name(
-const std::string& query,
+std::string& query,
 const std::vector<Airport>& airports) {
 	vector<int> results;
 
 	for (int i = 0; i < airports.size(); i++) {
-		if (airports[i].name.find(query) != string::npos) {
+		string lower_name = airports[i].name;
+		transform(lower_name.begin(), lower_name.end(), lower_name.begin(), ::tolower);
+
+		if (lower_name.find(query) != string::npos) {
 			results.push_back(i);
 		}
 	}

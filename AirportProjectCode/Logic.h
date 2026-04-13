@@ -10,7 +10,7 @@ class Logic {
 			const std::multimap<std::string, int>& countries);
 
 		static std::vector<int> search_by_name(
-			const std::string& query, 
+			std::string& query, 
 			const std::vector<Airport>& airports);
 
 		static int search_by_IATA(
