@@ -19,9 +19,10 @@ class UserInterface {
 	static std::string trim(const std::string& input);
 	static int type_select();
 
-	// input functions
+	// sub menus
 	static void iata_searchbar();
 	static void fill_new_airport(Airport& a);
+	static void country_searchbar();
 
 	// display functions
 	static void display_result(const std::vector <Airport>& airport, int index);

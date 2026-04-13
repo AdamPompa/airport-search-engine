@@ -469,6 +469,19 @@ void UserInterface::search_by_name_menu() {
 	}
 }
 
+void UserInterface::country_searchbar() {
+	string query;
+	do {
+		cout << endl << "Search: ";
+		getline(cin, query);
+	} while (query.empty() || query.length() != 2);
+
+	vector<int> results = Logic::search_by_country(query, DataManager::country_map);
+	cout << results.size();
+	cout << endl;
+	return;
+}
+
 void UserInterface::search_by_country_menu() {
 
 	string title = " Search by Country ";
@@ -514,7 +527,7 @@ void UserInterface::search_by_country_menu() {
 
 		switch (choice) {
 		case 1:
-			cout << "success";
+			country_searchbar();
 			break;
 		case 2:
 			return;
