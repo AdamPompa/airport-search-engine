@@ -12,7 +12,7 @@ class UserInterface {
 	static void search_by_name_menu();
 	static void search_by_iata_menu();
 	static void advanced_options_menu();
-	static void exit_menu();
+	static bool exit_menu();
 
 	// helper functions
 	static std::string input_check();

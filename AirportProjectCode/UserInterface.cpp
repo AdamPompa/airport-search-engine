@@ -27,6 +27,7 @@ void UserInterface::iata_searchbar() {
 	}
 	else {
 		display_result(DataManager::airports, result);
+		cout << endl;
 		return;
 	}
 }
@@ -174,13 +175,12 @@ void UserInterface::display_result(const vector<Airport>& airports, int index) {
 	string input;
 	cout << "Press any key to exit: ";
 	getline(cin, input);
-
 	if (!input.empty()) {
 		return;
 	}
 }
 
-void UserInterface::exit_menu() {
+bool UserInterface::exit_menu() {
 
 	string title = " Exit ";
 	int border_space = 50;
@@ -193,7 +193,7 @@ void UserInterface::exit_menu() {
 			<< endl;
 
 		cout << "1. Exit (Any additions to the database will be saved)" << endl
-			<< "2. Back to Main Menu";
+			<< "2. Back to Main Menu" << endl;
 
 		string string_choice;
 		int choice;
@@ -206,7 +206,6 @@ void UserInterface::exit_menu() {
 				cout << endl << "Choose Valid Option (1-2)";
 				continue;
 			}
-
 			try {
 				choice = stoi(string_choice);
 			}
@@ -214,8 +213,8 @@ void UserInterface::exit_menu() {
 				cout << endl << "Choose Valid Option (1-2)";
 				continue;
 			}
-
-			if (choice < 1 || choice > 2) {
+			if (choice < 1 || choice > 2) 
+			{
 				cout << endl << "Choose Valid Option (1-2)";
 				continue;
 			}
@@ -226,9 +225,10 @@ void UserInterface::exit_menu() {
 		case 1:
 			cout << "See you next time";
 			DataManager::save_data(DataManager::airports);
+			return false;
 			break;
 		case 2:
-			return;
+			return true;
 		}
 		break;
 	}
@@ -247,7 +247,7 @@ void UserInterface::advanced_options_menu() {
 			<< endl;
 
 		cout << "1. Add New Airport" << endl
-			<< "2. Back to Main Menu";
+			<< "2. Back to Main Menu" << endl;
 
 		string string_choice;
 		int choice;
@@ -299,7 +299,7 @@ void UserInterface::add_new_airport_menu() {
 			<< endl;
 
 		cout << "1. Add New Airport" << endl
-			<< "2. Back to Main Menu";
+			<< "2. Back to Main Menu" << endl;
 
 		string string_choice;
 		int choice;
@@ -344,44 +344,21 @@ void UserInterface::count_by_type_menu() {
 	int border_space = 50;
 	int menu_border = round((border_space - title.length()) / 2);
 
-	while (true) {
-		cout << string(menu_border, '=')
-			<< title
-			<< string(menu_border, '=')
-			<< endl;
+	cout << string(menu_border, '=')
+		<< title
+		<< string(menu_border, '=')
+		<< endl;
 
-		vector<int> count = Logic::type_counter(DataManager::airports);
+	vector<int> count = Logic::type_counter(DataManager::airports);
 
-		cout << left << setw(20) << "Small Aiports:" << count.at(0) << endl
-			<< setw(20) << "Large Airport:" << count.at(1) << endl
-			<< setw(20) << "Heliports:" << count.at(2) << endl;
+	cout << left << setw(20) << "Small Aiports:" << count.at(0) << endl
+		<< setw(20) << "Large Airport:" << count.at(1) << endl
+		<< setw(20) << "Heliports:" << count.at(2) << endl;
 
-		cout << "1. Back to Main Menu";
-
-		string string_choice;
-		int choice;
-		while (true) {
-			cout << endl << "Option: ";
-			getline(cin, string_choice);
-
-			if (string_choice.empty())
-			{
-				cout << endl << "Choose Valid Option (0)";
-				continue;
-			}
-			try {
-				choice = stoi(string_choice);
-			}
-			catch (...) {
-				cout << endl << "Choose Valid Option (1)";
-				continue;
-			}
-			if (choice != 1) {
-				cout << endl << "Choose Valid Option (2)";
-				continue;
-			}
-			break;
-		}
+	string input;
+	cout << endl << "Press any key to exit: ";
+	getline(cin, input);
+	if (!input.empty()) {
 		return;
 	}
 }
@@ -400,7 +377,7 @@ void UserInterface::search_by_iata_menu() {
 
 		cout << "Choose an Option:" << endl
 			<< "1. Search" << endl
-			<< "2. Back to Main Menu";
+			<< "2. Back to Main Menu" << endl;
 
 		string string_choice;
 		int choice;
@@ -453,7 +430,7 @@ void UserInterface::search_by_name_menu() {
 
 		cout << "Choose an Option:" << endl
 			<< "1. Search" << endl
-			<< "2. Back to Main Menu";
+			<< "2. Back to Main Menu" << endl;
 
 		string string_choice;
 		int choice;
@@ -506,7 +483,7 @@ void UserInterface::search_by_country_menu() {
 
 		cout << "Choose an Option:" << endl
 			<< "1. Search" << endl
-			<< "2. Back to Main Menu";
+			<< "2. Back to Main Menu" << endl;
 
 		string string_choice;
 		int choice;
@@ -612,8 +589,7 @@ void UserInterface::main_menu() {
 			advanced_options_menu();
 			break;
 		case 7:
-			exit_menu();
-			running = false;
+			running = exit_menu();
 			break;
 		default:
 			cout << "Choose Valid Option (1-7)";
