@@ -50,7 +50,7 @@ const std::vector<Airport>& airports) {
 	vector<int> results;
 
 	for (int i = 0; i < airports.size(); i++) {
-		if (airports[i].name.find(query) = true) {
+		if (airports[i].name.find(query) != string::npos) {
 			results.push_back(i);
 		}
 	}
