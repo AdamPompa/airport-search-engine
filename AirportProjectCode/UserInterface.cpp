@@ -122,7 +122,9 @@ void UserInterface::fill_new_airport(Airport& a) {
 	a.icao_code = trim(input_check());
 
 	cout << "Enter IATA Code: ";
-	a.iata_code = trim(input_check());
+	string code = trim(input_check());
+	transform(code.begin(), code.end(), code.begin(), ::toupper);
+	a.iata_code = code;
 
 	cout << "Enter GPS Code: ";
 	a.gps_code = trim(input_check());
