@@ -6,10 +6,13 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <algorithm>
+#include <cctype>
 using namespace std;
 
 void UserInterface::iata_searchbar() {
 	string query;
+	std::transform(query.begin(), query.end(), query.begin(), ::toupper);
 
 	do {
 		cout << endl << "Search: ";
