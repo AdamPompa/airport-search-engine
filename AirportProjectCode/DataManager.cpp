@@ -10,7 +10,6 @@ using namespace std;
 bool DataManager::data_change = false;
 
 vector <Airport> DataManager::airports;
-
 unordered_map<string, int> DataManager::iata_map;
 multimap<string, int> DataManager::country_map;
 

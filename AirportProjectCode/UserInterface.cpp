@@ -141,7 +141,7 @@ void UserInterface::fill_new_airport(Airport& a) {
 void UserInterface::display_result(const vector<Airport>& airports, int index) {
 	Airport selected = airports[index];
 	string airport_name = " " + selected.name + " ";
-	int border_space = 80;
+	int border_space = 100;
 	int name_border = round((border_space - airport_name.length()) / 2);
 
 	cout << string(name_border, '=')
