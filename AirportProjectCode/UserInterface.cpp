@@ -534,8 +534,8 @@ void UserInterface::country_searchbar() {
 
 	std::transform(query.begin(), query.end(), query.begin(), ::toupper);
 	vector<int> results = Logic::search_by_country(query, DataManager::country_map);
-	cout << results.size();
-	cout << endl;
+	int selection = search_results(results);
+	display_result(DataManager::airports, selection);
 	return;
 }
 
