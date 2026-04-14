@@ -27,5 +27,5 @@ class UserInterface {
 
 	// display functions
 	static void display_result(const std::vector <Airport>& airport, int index);
-	static int page_results();
+	static int search_results(const std::vector<int>& index);
 };

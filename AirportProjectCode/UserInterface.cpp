@@ -10,6 +10,43 @@
 #include <cctype>
 using namespace std;
 
+int UserInterface::search_results(const std::vector<int>& index) {
+	string string_choice;
+	int choice;
+	int index_choice;
+
+	for (int i = 0; i < index.size(); i++) {
+		cout << i + 1 << ". " << DataManager::airports[index[i]].name << endl;
+	}
+
+	while (true) {
+		cout << endl << "Option: ";
+		getline(cin, string_choice);
+
+		if (string_choice.empty())
+		{
+			cout << endl << "Choose Valid Option (1-" << index.size() << ")";
+			continue;
+		}
+		try {
+			choice = stoi(string_choice);
+		}
+		catch (...) {
+			cout << endl << "Choose Valid Option (1-" << index.size() << ")";
+			continue;
+		}
+		if (choice < 1 || choice > index.size())
+		{
+			cout << endl << "Choose Valid Option (1-" << index.size() << ")";
+			continue;
+		}
+		break;
+	}
+
+	index_choice = choice - 1;
+	return index_choice;
+}
+
 void UserInterface::iata_searchbar() {
 	string query;
 
@@ -430,8 +467,8 @@ void UserInterface::name_searchbar() {
 	transform(query.begin(), query.end(), query.begin(), ::tolower);
 
 	vector<int> results = Logic::search_by_name(query, DataManager::airports);
-	cout << results.size();
-	cout << endl;
+	int selection = search_results(results);
+	display_result(DataManager::airports, selection);
 	return;
 }
 
