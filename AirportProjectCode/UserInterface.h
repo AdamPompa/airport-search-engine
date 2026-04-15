@@ -23,8 +23,9 @@ class UserInterface {
 	static void iata_searchbar();
 	static void fill_new_airport(Airport& a);
 	static void country_searchbar();
-	static void name_searchbar();
+	static int name_searchbar();
 	static void high_low_display();
+	static void between_airports_menu();
 
 	// display functions
 	static void display_result(const std::vector <Airport>& airport, int index);

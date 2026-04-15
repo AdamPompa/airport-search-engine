@@ -3,6 +3,7 @@
 #include <cctype>
 #include <algorithm>
 #include <string>
+#include <cmath>
 using namespace std;
 
 vector<int> Logic::type_counter(const std::vector<Airport>& airports) {
@@ -125,4 +126,17 @@ int Logic::highest_elevation(const vector<Airport>& airports) {
 		}
 	}
 	return index;
+}
+
+double Logic::distance_calculator(const double& lat1, const double& lat2, const double& long1, const double& long2) {
+	double earth_radius = 6371;
+
+	double lat_diff = lat2 - lat1;
+	double long_diff = long2 - long1;
+
+	double a = sin(lat_diff / 2) * sin(lat_diff / 2) + cos(lat1) * cos(lat2) * sin(long_diff / 2) * sin(long_diff / 2);
+	double c = 2 * atan2(sqrt(a), sqrt(1 - a));
+
+	double distance = earth_radius * c;
+	return distance;
 }

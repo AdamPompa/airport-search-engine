@@ -335,6 +335,21 @@ void UserInterface::high_low_display() {
 	}
 }
 
+void UserInterface::between_airports_menu() {
+	cout << "= Select First Airport =";
+	int index1 = name_searchbar();
+	cout << "= Select Second Airport =";
+	int index2 = name_searchbar();
+
+	double lat1 = Logic::get_latitude(DataManager::airports[index1].coordinates);
+	double lat2 = Logic::get_latitude(DataManager::airports[index2].coordinates);
+	double long1 = Logic::get_longitude(DataManager::airports[index1].coordinates);
+	double long2 = Logic::get_longitude(DataManager::airports[index2].coordinates);
+
+	double distance = Logic::distance_calculator(lat1, lat2, long1, long2);
+	cout << "The distance between " << DataManager::airports[index1].name << " and " << DataManager::airports[index2].name << " is " << distance << "km" << endl;
+}
+
 void UserInterface::advanced_options_menu() {
 
 	string title = " Advanced Options ";
@@ -383,7 +398,7 @@ void UserInterface::advanced_options_menu() {
 
 		switch (choice) {
 		case 1:
-			
+			between_airports_menu();
 			break;
 		case 2:
 
@@ -533,7 +548,7 @@ void UserInterface::search_by_iata_menu() {
 	}
 }
 
-void UserInterface::name_searchbar() {
+int UserInterface::name_searchbar() {
 	string query;
 	do {
 		cout << endl << "Search (4 character minimum): ";
@@ -545,8 +560,7 @@ void UserInterface::name_searchbar() {
 
 	vector<int> results = Logic::search_by_name(query, DataManager::airports);
 	int selection = search_results(results);
-	display_result(DataManager::airports, selection);
-	return;
+	return selection;
 }
 
 void UserInterface::search_by_name_menu() {
@@ -593,9 +607,10 @@ void UserInterface::search_by_name_menu() {
 		}
 
 		switch (choice) {
-		case 1:
-			name_searchbar();
-			break;
+		case 1: {
+			int selection = name_searchbar();
+			display_result(DataManager::airports, selection);
+			break;}
 		case 2:
 			return;
 		}

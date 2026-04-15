@@ -28,4 +28,5 @@ class Logic {
 		// calculation functions
 		static int lowest_elevation(const std::vector<Airport>& airports);
 		static int highest_elevation(const std::vector<Airport>& airports);
+		static double distance_calculator(const double& lat1, const double& lat2, const double& long1, const double& long2);
 };
