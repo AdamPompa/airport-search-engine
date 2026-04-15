@@ -346,7 +346,7 @@ void UserInterface::between_airports_menu() {
 	double long1 = Logic::get_longitude(DataManager::airports[index1].coordinates);
 	double long2 = Logic::get_longitude(DataManager::airports[index2].coordinates);
 
-	double distance = Logic::distance_calculator(lat1, lat2, long1, long2);
+	double distance = Logic::distance_calculator(lat1, long1, lat1, long2);
 	cout << "The distance between " << DataManager::airports[index1].name << " and " << DataManager::airports[index2].name << " is " << distance << "km" << endl;
 }
 

@@ -128,7 +128,7 @@ int Logic::highest_elevation(const vector<Airport>& airports) {
 	return index;
 }
 
-double Logic::distance_calculator(double& lat1, double& lat2, double& long1, double& long2) {
+double Logic::distance_calculator(double lat1, double long1, double lat2, double long2) {
 	double earth_radius = 6371;
 	const double PI = 3.141592653589793;
 
