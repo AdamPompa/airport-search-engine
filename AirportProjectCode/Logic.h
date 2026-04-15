@@ -6,6 +6,7 @@
 
 class Logic {
 	public:
+		// search functions
 		static std::vector<int> search_by_country(
 			const std::string& query, 
 			const std::multimap<std::string, int>& countries);
@@ -18,23 +19,13 @@ class Logic {
 			const std::string& query,
 			const std::unordered_map<std::string, int>& iatas); 
 
+		// helper functions
 		static std::vector<int> type_counter(const std::vector<Airport>& airports); 
-		static double get_latitude(const std::string& coord) {
-			std::stringstream ss(coord);
-			std::string latitude;
+		static double get_latitude(const std::string& coord);
+		static double get_longitude(const std::string& coord);
+		static double convert_to_double(const std::string& elevation);
 
-			getline(ss, latitude, ',');
-			return std::stod(latitude);
-		}
-
-		double get_longitude(const std::string& coord) {
-			std::stringstream ss(coord);
-			std::string latitude;
-			std::string longitude;
-
-			getline(ss, latitude, ',');
-			getline(ss, longitude, '"');
-
-			return std::stod(longitude);
-		}
+		// calculation functions
+		static int lowest_elavation(const std::vector<Airport>& airports);
+		static int highest_elevation(const std::vector<Airport>& airports);
 };
