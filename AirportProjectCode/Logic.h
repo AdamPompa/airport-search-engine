@@ -26,6 +26,6 @@ class Logic {
 		static double convert_to_double(const std::string& elevation);
 
 		// calculation functions
-		static int lowest_elavation(const std::vector<Airport>& airports);
+		static int lowest_elevation(const std::vector<Airport>& airports);
 		static int highest_elevation(const std::vector<Airport>& airports);
 };

@@ -279,7 +279,7 @@ void UserInterface::high_low_display() {
 	int border_space = 100;
 	int menu_border = round((border_space - title.length()) / 2);
 
-	int lowest = Logic::lowest_elavation(DataManager::airports);
+	int lowest = Logic::lowest_elevation(DataManager::airports);
 	int highest = Logic::highest_elevation(DataManager::airports);
 
 	while (true) {

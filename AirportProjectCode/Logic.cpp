@@ -101,7 +101,7 @@ double Logic::convert_to_double(const std::string& elevation) {
 	return stod(elevation);
 }
 
-int Logic::lowest_elavation(const vector<Airport>& airports) {
+int Logic::lowest_elevation(const vector<Airport>& airports) {
 	double lowest = convert_to_double(airports[0].elevation);
 	int index;
 
