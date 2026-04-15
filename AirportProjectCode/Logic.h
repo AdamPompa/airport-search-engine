@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "DataManager.h"
+#include <sstream>
 
 class Logic {
 	public:
@@ -18,4 +19,22 @@ class Logic {
 			const std::unordered_map<std::string, int>& iatas); 
 
 		static std::vector<int> type_counter(const std::vector<Airport>& airports); 
+		static double get_latitude(const std::string& coord) {
+			std::stringstream ss(coord);
+			std::string latitude;
+
+			getline(ss, latitude, ',');
+			return std::stod(latitude);
+		}
+
+		double get_longitude(const std::string& coord) {
+			std::stringstream ss(coord);
+			std::string latitude;
+			std::string longitude;
+
+			getline(ss, latitude, ',');
+			getline(ss, longitude, '"');
+
+			return std::stod(longitude);
+		}
 };
