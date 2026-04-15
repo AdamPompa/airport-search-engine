@@ -24,6 +24,7 @@ class UserInterface {
 	static void fill_new_airport(Airport& a);
 	static void country_searchbar();
 	static void name_searchbar();
+	static void high_low_display();
 
 	// display functions
 	static void display_result(const std::vector <Airport>& airport, int index);

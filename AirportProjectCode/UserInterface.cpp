@@ -274,6 +274,67 @@ bool UserInterface::exit_menu() {
 	}
 }
 
+void UserInterface::high_low_display() {
+	string title = " High / Low Airports ";
+	int border_space = 100;
+	int menu_border = round((border_space - title.length()) / 2);
+
+	int lowest = Logic::lowest_elavation(DataManager::airports);
+	int highest = Logic::highest_elevation(DataManager::airports);
+
+	while (true) {
+		cout << string(menu_border, '=')
+			<< title
+			<< string(menu_border, '=')
+			<< endl;
+
+		cout << left << setw(50) << "Lowest Elevation: " << DataManager::airports[lowest].name
+			<< setw(50) << "Highest Elevation: " << DataManager::airports[highest].name << endl;
+		
+		cout << endl << "1. View Lowest" << endl
+			<< "2. View Highest" << endl
+			<< "3. Exit" << endl;
+
+		string string_choice;
+		int choice;
+		while (true) {
+			cout << endl << "Option: ";
+			getline(cin, string_choice);
+
+			if (string_choice.empty())
+			{
+				cout << endl << "Choose Valid Option (1-3)";
+				continue;
+			}
+
+			try {
+				choice = stoi(string_choice);
+			}
+			catch (...) {
+				cout << endl << "Choose Valid Option (1-3)";
+				continue;
+			}
+
+			if (choice < 1 || choice > 3) {
+				cout << endl << "Choose Valid Option (1-3)";
+				continue;
+			}
+			break;
+		}
+
+		switch (choice) {
+		case 1:
+			display_result(DataManager::airports, lowest);
+			break;
+		case 2:
+			display_result(DataManager::airports, highest);
+			break;
+		case 3:
+			return;
+		}
+	}
+}
+
 void UserInterface::advanced_options_menu() {
 
 	string title = " Advanced Options ";
@@ -286,8 +347,11 @@ void UserInterface::advanced_options_menu() {
 			<< string(menu_border, '=')
 			<< endl;
 
-		cout << "1. Add New Airport" << endl
-			<< "2. Back to Main Menu" << endl;
+		cout << "1. Find Distance Between Airports" << endl
+			<< "2. Find Nearest Airport" << endl
+			<< "3. Airports in Radius" << endl
+			<< "4. Highest / Lowest Airports" << endl
+			<< "5. Airports with IATA" << endl;
 
 		string string_choice;
 		int choice;
@@ -297,7 +361,7 @@ void UserInterface::advanced_options_menu() {
 
 			if (string_choice.empty())
 			{
-				cout << endl << "Choose Valid Option (1-2)";
+				cout << endl << "Choose Valid Option (1-5)";
 				continue;
 			}
 
@@ -305,12 +369,12 @@ void UserInterface::advanced_options_menu() {
 				choice = stoi(string_choice);
 			}
 			catch (...) {
-				cout << endl << "Choose Valid Option (1-2)";
+				cout << endl << "Choose Valid Option (1-5)";
 				continue;
 			}
 
-			if (choice < 1 || choice > 2) {
-				cout << endl << "Choose Valid Option (1-2)";
+			if (choice < 1 || choice > 5) {
+				cout << endl << "Choose Valid Option (1-5)";
 				continue;
 			}
 			break;
@@ -318,9 +382,18 @@ void UserInterface::advanced_options_menu() {
 
 		switch (choice) {
 		case 1:
-			cout << "success";
+			
 			break;
 		case 2:
+
+			break;
+		case 3:
+			
+			break;
+		case 4:
+			high_low_display();
+			break;
+		case 5:
 			return;
 		}
 	}

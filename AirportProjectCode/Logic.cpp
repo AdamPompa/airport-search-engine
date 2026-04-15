@@ -97,7 +97,7 @@ double Logic::get_longitude(const std::string& coord) {
 	return stod(longitude);
 }
 
-double convert_to_double(const std::string& elevation) {
+double Logic::convert_to_double(const std::string& elevation) {
 	return stod(elevation);
 }
 
