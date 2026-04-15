@@ -43,7 +43,7 @@ int UserInterface::search_results(const std::vector<int>& index) {
 		break;
 	}
 
-	index_choice = choice - 1;
+	index_choice = index[choice - 1];
 	return index_choice;
 }
 
