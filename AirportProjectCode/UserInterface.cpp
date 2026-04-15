@@ -213,7 +213,7 @@ void UserInterface::display_result(const vector<Airport>& airports, int index) {
 		<< setw(coulumn_width) << "Coordinates:" << selected.coordinates << endl;
 	
 	string input;
-	cout << "Press any key to exit: ";
+	cout << endl << "Press any key to exit: ";
 	getline(cin, input);
 	if (!input.empty()) {
 		return;
@@ -288,8 +288,8 @@ void UserInterface::high_low_display() {
 			<< string(menu_border, '=')
 			<< endl;
 
-		cout << left << setw(50) << "Lowest Elevation: " << DataManager::airports[lowest].name
-			<< setw(50) << "Highest Elevation: " << DataManager::airports[highest].name << endl;
+		cout << left << "Lowest Elevation: " << setw(25) << DataManager::airports[lowest].name
+			<< "Highest Elevation: " << setw(25) << DataManager::airports[highest].name << endl;
 		
 		cout << endl << "1. View Lowest" << endl
 			<< "2. View Highest" << endl
@@ -351,7 +351,8 @@ void UserInterface::advanced_options_menu() {
 			<< "2. Find Nearest Airport" << endl
 			<< "3. Airports in Radius" << endl
 			<< "4. Highest / Lowest Airports" << endl
-			<< "5. Airports with IATA" << endl;
+			<< "5. Airports with IATA" << endl
+			<< "6. Exit" << endl;
 
 		string string_choice;
 		int choice;
@@ -361,7 +362,7 @@ void UserInterface::advanced_options_menu() {
 
 			if (string_choice.empty())
 			{
-				cout << endl << "Choose Valid Option (1-5)";
+				cout << endl << "Choose Valid Option (1-6)";
 				continue;
 			}
 
@@ -369,12 +370,12 @@ void UserInterface::advanced_options_menu() {
 				choice = stoi(string_choice);
 			}
 			catch (...) {
-				cout << endl << "Choose Valid Option (1-5)";
+				cout << endl << "Choose Valid Option (1-6)";
 				continue;
 			}
 
-			if (choice < 1 || choice > 5) {
-				cout << endl << "Choose Valid Option (1-5)";
+			if (choice < 1 || choice > 6) {
+				cout << endl << "Choose Valid Option (1-6)";
 				continue;
 			}
 			break;
@@ -394,6 +395,9 @@ void UserInterface::advanced_options_menu() {
 			high_low_display();
 			break;
 		case 5:
+			
+			break;
+		case 6:
 			return;
 		}
 	}
