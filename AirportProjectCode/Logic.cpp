@@ -163,3 +163,16 @@ int Logic::nearest_calculator(double lat1, double long1) {
 
 	return index;
 }
+
+vector<int> Logic::radius_calculator(double lat1, double long1, double radius) {
+	vector<int> results;
+	double current_distance;
+
+	for (int i = 0; i < DataManager::airports.size(); i++) {
+		current_distance = distance_calculator(lat1, long1, get_latitude(DataManager::airports[i].coordinates), get_longitude(DataManager::airports[i].coordinates));
+		if (current_distance <= radius) {
+			results.push_back(i);
+		}
+	}
+	return results;
+}

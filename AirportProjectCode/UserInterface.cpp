@@ -14,15 +14,15 @@ double UserInterface::double_validator() {
 	string input;
 	double result;
 
-	getline(cin, input);
-
 	while (true) {
+		getline(cin, input);
+
 		try {
 			result = stod(input);
 			return result;
 		}
 		catch (...) {
-			cout << "Input a Number";
+			cout << "Input a Number: ";
 		}
 	}
 }
@@ -31,10 +31,17 @@ void UserInterface::nearest_loc_menu(const vector<Airport>& airports) {
 	double location_lat, location_long;
 	int index;
 
-	cout << "Enter Latidude: ";
-	location_lat = double_validator();
-	cout << "Enter Longitude: ";
-	location_long = double_validator();
+	do {
+		cout << "Enter Latidude: ";
+		location_lat = double_validator();
+	}
+	while (location_lat > 90 || location_lat < -90);
+
+	do {
+		cout << "Enter Longitude: ";
+		location_long = double_validator();
+	}
+	while (location_long > 180 || location_long < -180);
 	
 	index = Logic::nearest_calculator(location_lat, location_long);
 	double distance = Logic::distance_calculator(location_lat, location_long, Logic::get_latitude(airports[index].coordinates), Logic::get_longitude(airports[index].coordinates));
@@ -76,6 +83,32 @@ void UserInterface::nearest_loc_menu(const vector<Airport>& airports) {
 	case 2:
 		return;
 	}
+}
+
+void UserInterface::radius_menu() {
+	double location_lat, location_long, radius;
+	vector<int> index;
+
+	do {
+		cout << "Enter Latidude: ";
+		location_lat = double_validator();
+	} while (location_lat > 90 || location_lat < -90);
+
+	do {
+		cout << "Enter Longitude: ";
+		location_long = double_validator();
+	} while (location_lat > 180 || location_lat < -180);
+		
+	cout << "Enter radius: ";
+	radius = UserInterface::double_validator();
+
+	index = Logic::radius_calculator(location_lat, location_long, radius);
+	if (index.empty()) {
+		cout << endl << "No Airports Within " << radius << "km" << endl;
+		return;
+	}
+	int choice = UserInterface::search_results(index);
+	UserInterface::display_result(DataManager::airports, choice);
 }
 
 int UserInterface::search_results(const std::vector<int>& index) {
@@ -474,7 +507,7 @@ void UserInterface::advanced_options_menu() {
 			nearest_loc_menu(DataManager::airports);
 			break;
 		case 3:
-			
+			radius_menu();
 			break;
 		case 4:
 			high_low_display();

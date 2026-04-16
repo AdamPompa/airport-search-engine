@@ -28,6 +28,7 @@ class UserInterface {
 	static void high_low_display();
 	static void between_airports_menu();
 	static void nearest_loc_menu(const std::vector<Airport>& airports);
+	static void radius_menu();
 
 	// display functions
 	static void display_result(const std::vector <Airport>& airport, int index);
