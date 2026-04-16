@@ -117,7 +117,7 @@ int Logic::lowest_elevation(const vector<Airport>& airports) {
 
 int Logic::highest_elevation(const vector<Airport>& airports) {
 	double highest = convert_to_double(airports[0].elevation);
-	int index;
+	int index = 0;
 
 	for (int i = 0; i < airports.size(); i++) {
 		if (highest < convert_to_double(airports[i].elevation)) {

@@ -10,6 +10,82 @@
 #include <cctype>
 using namespace std;
 
+double UserInterface::double_validator() {
+	string input;
+	double result;
+
+	getline(cin, input);
+
+	while (true) {
+		try {
+			result = stod(input);
+			return result;
+		}
+		catch (...) {
+			cout << "Input a Number";
+		}
+	}
+}
+
+void UserInterface::nearest_loc_menu(const vector<Airport>& airports) {
+	string first = airports[0].coordinates;
+	double location_lat, location_long, closest;
+	int index = 0;
+
+	cout << "Enter Latidude: ";
+	location_lat = double_validator();
+	cout << "Enter Longitude: ";
+	location_long = double_validator();
+	closest = Logic::distance_calculator(location_lat, location_long, Logic::get_latitude(first), Logic::get_longitude(first));
+
+	for (int i = 0; i < airports.size(); i++) {
+		if (closest > Logic::distance_calculator(location_lat, location_long, Logic::get_latitude(airports[i].coordinates), Logic::get_longitude(airports[i].coordinates))) {
+			closest = Logic::distance_calculator(location_lat, location_long, Logic::get_latitude(airports[i].coordinates), Logic::get_longitude(airports[i].coordinates));
+			index = i;
+		}
+	}
+
+	double distance = Logic::distance_calculator(location_lat, location_long, Logic::get_latitude(airports[index].coordinates), Logic::get_longitude(airports[index].coordinates));
+
+	cout << "The Closest Airport to That Location is " << airports[index].name << " at " << distance << "km" << endl
+		<< "1. View Full Details" << endl
+		<< "2. Exit";
+
+	string string_choice;
+	int choice;
+	while (true) {
+		cout << endl << "Option: ";
+		getline(cin, string_choice);
+
+		if (string_choice.empty())
+		{
+			cout << endl << "Choose Valid Option (1-2)";
+			continue;
+		}
+		try {
+			choice = stoi(string_choice);
+		}
+		catch (...) {
+			cout << endl << "Choose Valid Option (1-2)";
+			continue;
+		}
+		if (choice < 1 || choice > 2)
+		{
+			cout << endl << "Choose Valid Option (1-2)";
+			continue;
+		}
+		break;
+	}
+
+	switch (choice) {
+	case 1:
+		display_result(airports, index);
+		break;
+	case 2:
+		return;
+	}
+}
+
 int UserInterface::search_results(const std::vector<int>& index) {
 	string string_choice;
 	int choice;
@@ -104,6 +180,8 @@ int UserInterface::type_select() {
 	return choice;
 }
 
+
+
 string UserInterface::trim(const std::string& input) {
 	size_t pos = input.find_first_not_of(" \t\n\r");
 	if (pos == std::string::npos) {
@@ -174,9 +252,9 @@ void UserInterface::fill_new_airport(Airport& a) {
 	a.local_code = trim(input_check());
 
 	string latitude, longitude;
-	cout << "Enter Latitude: ";
+	cout << "Enter Latitude in degrees: ";
 	latitude = trim(input_check());
-	cout << "Enter Longitude: ";
+	cout << "Enter Longitude in degrees: ";
 	longitude = trim(input_check());
 	a.coordinates = latitude + "," + longitude;
 }
@@ -401,7 +479,7 @@ void UserInterface::advanced_options_menu() {
 			between_airports_menu();
 			break;
 		case 2:
-
+			nearest_loc_menu(DataManager::airports);
 			break;
 		case 3:
 			

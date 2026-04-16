@@ -18,6 +18,7 @@ class UserInterface {
 	static std::string input_check();
 	static std::string trim(const std::string& input);
 	static int type_select();
+	static double double_validator();
 
 	// sub menus
 	static void iata_searchbar();
@@ -26,6 +27,7 @@ class UserInterface {
 	static int name_searchbar();
 	static void high_low_display();
 	static void between_airports_menu();
+	static void nearest_loc_menu(const std::vector<Airport>& airports);
 
 	// display functions
 	static void display_result(const std::vector <Airport>& airport, int index);
