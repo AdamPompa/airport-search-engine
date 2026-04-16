@@ -810,6 +810,65 @@ void UserInterface::search_by_name_menu() {
 
 void UserInterface::country_searchbar() {
 	string query;
+	SortBy sort_by;
+
+	cout << "= Sort By =" << endl
+		<< "1. municipality (a-z)" << endl
+		<< "2. name (a-z)" << endl
+		<< "3. country (a-z)" << endl
+		<< "4. type (a-z)" << endl
+		<< "5. elevation (a-z)" << endl
+		<< "6. coordinates (a-z)" << endl;
+
+	string string_choice;
+	int choice;
+	while (true) {
+		cout << endl << "Option: ";
+		getline(cin, string_choice);
+
+		if (string_choice.empty())
+		{
+			cout << endl << "Choose Valid Option (1-6)";
+			continue;
+		}
+
+		try {
+			choice = stoi(string_choice);
+		}
+		catch (...) {
+			cout << endl << "Choose Valid Option (1-6)";
+			continue;
+		}
+
+		if (choice < 1 || choice > 6) {
+			cout << endl << "Choose Valid Option (1-6)";
+			continue;
+		}
+		break;
+	}
+
+	switch (choice) {
+	case 1:
+		sort_by = SortBy::municipality;
+		break;
+	case 2:
+		sort_by = SortBy::name;
+		break;
+	case 3:
+		sort_by = SortBy::country;
+		break;
+	case 4:
+		sort_by = SortBy::type;
+		break;
+	case 5: {
+		sort_by = SortBy::elevation;
+		break;
+	}
+	case 6:
+		sort_by = SortBy::coordinates;
+		break;
+	}
+
 	do {
 		cout << endl << "Search: ";
 		getline(cin, query);
@@ -817,6 +876,7 @@ void UserInterface::country_searchbar() {
 
 	std::transform(query.begin(), query.end(), query.begin(), ::toupper);
 	vector<int> results = Logic::search_by_country(query, DataManager::country_map);
+	Logic::sorter(results, DataManager::airports, sort_by);
 	int selection = search_results(results);
 	display_result(DataManager::airports, selection);
 	return;
