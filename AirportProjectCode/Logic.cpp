@@ -6,6 +6,34 @@
 #include <cmath>
 using namespace std;
 
+void Logic::sorter(std::vector<int>& index, const std::vector<Airport>& airports, SortBy field) {
+
+	sort(index.begin(), index.end(), [&] (int a, int b) {
+			switch (field) {
+				case SortBy::municipality:
+					return airports[a].municipality < airports[b].municipality;
+					break;
+				case SortBy::name:
+					return airports[a].name < airports[b].name;
+					break;
+				case SortBy::country:
+					return airports[a].iso_country < airports[b].iso_country;
+					break;
+				case SortBy::type:
+					return airports[a].type < airports[b].type;
+					break;
+				case SortBy::elevation:
+					return airports[a].elevation < airports[b].elevation;
+					break;
+				case SortBy::coordinates:
+					return airports[a].coordinates < airports[b].coordinates;
+					break;
+			}
+
+		return false;
+	});
+}
+
 vector<int> Logic::type_counter(const std::vector<Airport>& airports) {
 	int small_airport_count = 0;
 	int large_airport_count = 0;
@@ -174,5 +202,17 @@ vector<int> Logic::radius_calculator(double lat1, double long1, double radius) {
 			results.push_back(i);
 		}
 	}
+	return results;
+}
+
+vector<int> Logic::find_with_iata(const vector<Airport>& airports) {
+	vector<int> results;
+
+	for (int i = 0; i < airports.size(); i++) {
+		if (!airports[i].iata_code.empty()) {
+			results.push_back(i);
+		}
+	}
+
 	return results;
 }

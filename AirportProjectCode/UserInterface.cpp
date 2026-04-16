@@ -512,12 +512,40 @@ void UserInterface::advanced_options_menu() {
 		case 4:
 			high_low_display();
 			break;
-		case 5:
-			
-			break;
+		case 5: {
+			vector<int> iata_list = Logic::find_with_iata(DataManager::airports);
+			with_iata_menu(iata_list);
+			break;}
 		case 6:
 			return;
 		}
+	}
+}
+
+void UserInterface::with_iata_menu(const std::vector<int>& index) {
+	string title = " Airports With IATA ";
+	int border_space = 50;
+	int menu_border = round((border_space - title.length()) / 2);
+	
+	cout << string(menu_border, '=')
+		<< title
+		<< string(menu_border, '=')
+		<< endl;
+	
+	if (!index.empty()) {
+		for (int i = 0; i < index.size(); i++) {
+			cout << i + 1 << ". " << DataManager::airports[index[i]].name << " " << DataManager::airports[index[i]].iata_code << endl;
+		}
+
+		string input;
+		cout << endl << "Press any key to exit: ";
+		getline(cin, input);
+		if (!input.empty()) {
+			return;
+		}
+	}
+	else {
+		cout << "= There are no airports with an IATA in the database =" << endl;
 	}
 }
 

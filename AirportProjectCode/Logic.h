@@ -4,6 +4,15 @@
 #include "DataManager.h"
 #include <sstream>
 
+enum class SortBy {
+	municipality,
+	name,
+	country,
+	type,
+	elevation,
+	coordinates,
+};
+
 class Logic {
 	public:
 		// search functions
@@ -18,6 +27,14 @@ class Logic {
 		static int search_by_IATA(
 			const std::string& query,
 			const std::unordered_map<std::string, int>& iatas); 
+
+		static std::vector<int> find_with_iata(const std::vector<Airport>& airports);
+
+		// sort
+		static void sorter(
+			std::vector<int>& index,
+			const std::vector<Airport>& airports,
+			SortBy field);
 
 		// helper functions
 		static std::vector<int> type_counter(const std::vector<Airport>& airports); 
