@@ -28,23 +28,15 @@ double UserInterface::double_validator() {
 }
 
 void UserInterface::nearest_loc_menu(const vector<Airport>& airports) {
-	string first = airports[0].coordinates;
-	double location_lat, location_long, closest;
-	int index = 0;
+	double location_lat, location_long;
+	int index;
 
 	cout << "Enter Latidude: ";
 	location_lat = double_validator();
 	cout << "Enter Longitude: ";
 	location_long = double_validator();
-	closest = Logic::distance_calculator(location_lat, location_long, Logic::get_latitude(first), Logic::get_longitude(first));
-
-	for (int i = 0; i < airports.size(); i++) {
-		if (closest > Logic::distance_calculator(location_lat, location_long, Logic::get_latitude(airports[i].coordinates), Logic::get_longitude(airports[i].coordinates))) {
-			closest = Logic::distance_calculator(location_lat, location_long, Logic::get_latitude(airports[i].coordinates), Logic::get_longitude(airports[i].coordinates));
-			index = i;
-		}
-	}
-
+	
+	index = Logic::nearest_calculator(location_lat, location_long);
 	double distance = Logic::distance_calculator(location_lat, location_long, Logic::get_latitude(airports[index].coordinates), Logic::get_longitude(airports[index].coordinates));
 
 	cout << "The Closest Airport to That Location is " << airports[index].name << " at " << distance << "km" << endl

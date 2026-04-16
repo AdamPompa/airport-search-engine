@@ -146,3 +146,20 @@ double Logic::distance_calculator(double lat1, double long1, double lat2, double
 	double distance = earth_radius * c;
 	return distance;
 }
+
+int Logic::nearest_calculator(double lat1, double long1) {
+	string first = DataManager::airports[0].coordinates;
+	double closest;
+	int index = 0;
+
+	closest = distance_calculator(lat1, long1, get_latitude(first), get_longitude(first));
+
+	for (int i = 0; i < DataManager::airports.size(); i++) {
+		if (closest > distance_calculator(lat1, long1, get_latitude(DataManager::airports[i].coordinates), get_longitude(DataManager::airports[i].coordinates))) {
+			closest = distance_calculator(lat1, long1, get_latitude(DataManager::airports[i].coordinates), get_longitude(DataManager::airports[i].coordinates));
+			index = i;
+		}
+	}
+
+	return index;
+}
