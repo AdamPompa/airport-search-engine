@@ -12,24 +12,33 @@ void Logic::sorter(std::vector<int>& index, const std::vector<Airport>& airports
 			switch (field) {
 				case SortBy::municipality:
 					return airports[a].municipality < airports[b].municipality;
-					break;
+				
 				case SortBy::name:
 					return airports[a].name < airports[b].name;
-					break;
+				
 				case SortBy::country:
 					return airports[a].iso_country < airports[b].iso_country;
-					break;
+				
 				case SortBy::type:
 					return airports[a].type < airports[b].type;
-					break;
+
 				case SortBy::elevation:
 					return airports[a].elevation < airports[b].elevation;
-					break;
-				case SortBy::coordinates:
-					return airports[a].coordinates < airports[b].coordinates;
-					break;
-			}
 
+				case SortBy::coordinates: {
+					double lat_a = get_latitude(airports[a].coordinates);
+					double lat_b = get_latitude(airports[b].coordinates);
+
+					if (lat_a == lat_b) {
+						double long_a = get_longitude(airports[a].coordinates);
+						double long_b = get_longitude(airports[b].coordinates);
+						return long_a < long_b;
+					}
+					else {
+						return lat_a < lat_b;
+					}
+				}
+			}
 		return false;
 	});
 }
