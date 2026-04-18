@@ -23,7 +23,7 @@ void Logic::sorter(std::vector<int>& index, const std::vector<Airport>& airports
 					return airports[a].type < airports[b].type;
 
 				case SortBy::elevation:
-					return airports[a].elevation < airports[b].elevation;
+					return convert_to_double(airports[a].elevation) < convert_to_double(airports[b].elevation);
 
 				case SortBy::coordinates: {
 					double lat_a = get_latitude(airports[a].coordinates);
