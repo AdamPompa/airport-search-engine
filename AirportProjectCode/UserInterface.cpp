@@ -335,7 +335,7 @@ bool UserInterface::exit_menu() {
 			<< string(menu_border, '=')
 			<< endl;
 
-		cout << "1. Exit (Any additions to the database will be saved)" << endl
+		cout << endl << "1. Exit (Any additions to the database will be saved)" << endl
 			<< "2. Back to Main Menu" << endl;
 
 		string string_choice;
@@ -465,7 +465,7 @@ void UserInterface::advanced_options_menu() {
 			<< string(menu_border, '=')
 			<< endl;
 
-		cout << "1. Find Distance Between Airports" << endl
+		cout << endl << "1. Find Distance Between Airports" << endl
 			<< "2. Find Nearest Airport" << endl
 			<< "3. Airports in Radius" << endl
 			<< "4. Highest / Lowest Airports" << endl
@@ -561,7 +561,7 @@ void UserInterface::add_new_airport_menu() {
 			<< string(menu_border, '=')
 			<< endl;
 
-		cout << "1. Add New Airport" << endl
+		cout << endl << "1. Add New Airport" << endl
 			<< "2. Back to Main Menu" << endl;
 
 		string string_choice;
@@ -614,7 +614,7 @@ void UserInterface::count_by_type_menu() {
 
 	vector<int> count = Logic::type_counter(DataManager::airports);
 
-	cout << left << setw(20) << "Small Aiports:" << count.at(0) << endl
+	cout << endl << left << setw(20) << "Small Aiports:" << count.at(0) << endl
 		<< setw(20) << "Large Airport:" << count.at(1) << endl
 		<< setw(20) << "Heliports:" << count.at(2) << endl;
 
@@ -638,7 +638,7 @@ void UserInterface::search_by_iata_menu() {
 			<< string(menu_border, '=')
 			<< endl;
 
-		cout << "Choose an Option:" << endl
+		cout << endl << "Choose an Option:" << endl
 			<< "1. Search" << endl
 			<< "2. Back to Main Menu" << endl;
 
@@ -766,7 +766,7 @@ void UserInterface::search_by_name_menu() {
 			<< string(menu_border, '=')
 			<< endl;
 
-		cout << "Choose an Option:" << endl
+		cout << endl << "Choose an Option:" << endl
 			<< "1. Search" << endl
 			<< "2. Back to Main Menu" << endl;
 
@@ -894,7 +894,7 @@ void UserInterface::search_by_country_menu() {
 			<< string(menu_border, '=')
 			<< endl;
 
-		cout << "Choose an Option:" << endl
+		cout << endl << "Choose an Option:" << endl
 			<< "1. Search" << endl
 			<< "2. Back to Main Menu" << endl;
 
