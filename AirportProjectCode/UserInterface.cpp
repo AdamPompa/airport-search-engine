@@ -1,5 +1,5 @@
 #include "UserInterface.h"
-#include "Datamanager.h"
+#include "DataManager.h"
 #include "Logic.h"
 #include <iostream>
 #include <cmath>
