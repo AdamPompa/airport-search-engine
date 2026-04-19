@@ -136,7 +136,15 @@ double Logic::get_longitude(const std::string& coord) {
 }
 
 double Logic::convert_to_double(const std::string& elevation) {
-	return stod(elevation);
+	if (elevation.empty()) {
+		return 0;
+	}
+	try {
+		return stod(elevation);
+	}
+	catch (...) {
+		return 0;
+	}
 }
 
 int Logic::lowest_elevation(const vector<Airport>& airports) {
