@@ -160,7 +160,7 @@ void UserInterface::iata_searchbar() {
 	int result = Logic::search_by_IATA(query, DataManager::iata_map);
 	if (result == -1)
 	{
-		cout << "Code Not Found" << endl;
+		cout << "= Code Not Found =" << endl;
 		return;
 	}
 	else {
@@ -441,8 +441,17 @@ void UserInterface::high_low_display() {
 void UserInterface::between_airports_menu() {
 	cout << "= Select First Airport =";
 	int index1 = name_searchbar();
+	if (index1 == -1) {
+		cout << "= No Airport Selected =" << endl;
+		return;
+	}
+
 	cout << "= Select Second Airport =";
 	int index2 = name_searchbar();
+	if (index2 == -1) {
+		cout << "= No Airport Selected =" << endl;
+		return;
+	}
 
 	double lat1 = Logic::get_latitude(DataManager::airports[index1].coordinates);
 	double lat2 = Logic::get_latitude(DataManager::airports[index2].coordinates);
@@ -683,7 +692,7 @@ int UserInterface::name_searchbar() {
 	string query;
 	SortBy sort_by;
 
-	cout << "= Sort By =" << endl
+	cout << endl << "= Sort By =" << endl
 		<< "1. municipality (a-z)" << endl
 		<< "2. name (a-z)" << endl
 		<< "3. country (a-z)" << endl
@@ -749,6 +758,10 @@ int UserInterface::name_searchbar() {
 	transform(query.begin(), query.end(), query.begin(), ::tolower);
 
 	vector<int> results = Logic::search_by_name(query, DataManager::airports);
+	if (results.empty()) {
+		cout << "= No Results Found =" << endl;
+		return -1;
+	}
 	Logic::sorter(results, DataManager::airports, sort_by);
 	int selection = search_results(results);
 	return selection;
@@ -800,6 +813,9 @@ void UserInterface::search_by_name_menu() {
 		switch (choice) {
 		case 1: {
 			int selection = name_searchbar();
+			if (selection == -1) {
+				return;
+			}
 			display_result(DataManager::airports, selection);
 			break;}
 		case 2:
@@ -876,6 +892,11 @@ void UserInterface::country_searchbar() {
 
 	std::transform(query.begin(), query.end(), query.begin(), ::toupper);
 	vector<int> results = Logic::search_by_country(query, DataManager::country_map);
+	if (results.empty()) {
+		cout << "= No Results Found =" << endl;
+		return;
+	}
+	
 	Logic::sorter(results, DataManager::airports, sort_by);
 	int selection = search_results(results);
 	display_result(DataManager::airports, selection);
