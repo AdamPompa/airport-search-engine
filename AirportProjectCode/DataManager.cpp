@@ -114,7 +114,7 @@ string DataManager::escape_csv(const string& element) {
 void DataManager::save_data(const vector <Airport>& airports) {
 	
 	if (data_change == true) {
-		ofstream file("airport-test-codes.txt");
+		ofstream file("airport-codes.csv");
 
 		if (!file) {
 			throw runtime_error("failed to open file");

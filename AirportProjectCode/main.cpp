@@ -3,7 +3,7 @@
 #include "Logic.h"
 
 int main() {
-	DataManager::load_data("airport-test-codes.txt");
+	DataManager::load_data("airport - codes.csv");
 	DataManager::make_maps(DataManager::airports);
 	UserInterface::main_menu();
 	return 0;
