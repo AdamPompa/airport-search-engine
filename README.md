@@ -28,18 +28,4 @@ I will also use:
 
 ## Classes 
 
-### DataManager
-
-attributes: data_change
-
-data_change tracks whether the CSV has been changed at all and determines if the CSV should be overwritten.
-
-methods: load_data(), add_airport(), save_data()
-
-load_data() reads from the CSV and creates a vector of structs in working memory for the program to use.
-
-
-- Logic class will handle all searching, sorting, analysis etc.
-- Display class will handle menus and displaying data in a readable way
-
 ![AirportProjectUML](AirportProjectUML.png)
